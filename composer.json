@@ -1,0 +1,5 @@
+{
+    "require": {
+        "codeitnowin/barcode": "^3.0"
+    }
+}
