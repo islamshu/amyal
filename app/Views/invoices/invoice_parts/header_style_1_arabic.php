@@ -6,7 +6,7 @@
                 "color" => $color,
                 "invoice_info" => $invoice_info
             );
-            echo view('invoices/invoice_parts/invoice_info', $data);
+            echo view('invoices/invoice_parts/invoice_info_ar', $data);
             ?>
         </td>
         
@@ -24,13 +24,13 @@
     <tr>
        
        
-        <td><?php
-            echo view('invoices/invoice_parts/bill_to', $data);
+    <td style="text-align: right;"><?php
+            echo view('invoices/invoice_parts/bill_to_ar', $data);
             ?>
         </td>
         <td></td>
-        <td><?php
-            echo view('invoices/invoice_parts/bill_from', $data);
+        <td style="text-align: right;"><?php
+            echo view('invoices/invoice_parts/bill_from_ar', $data);
             ?>
         </td>
     </tr>

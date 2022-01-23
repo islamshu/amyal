@@ -27,20 +27,20 @@
 <br />
 
 
-<table class="table-responsive" style="width: 100%; color: #444; direction: rtl !important;">            
+<table class="table-responsive" style="width: 100%; color: #444; direction: rtl !important; text-align: center;" >            
     <tr style="font-weight: bold; background-color: <?php echo $color; ?>; color: #fff;  ">
-    <th style="text-align: left;  width: 20%; "> <?php echo app_lang("total"); ?></th>
-    <th style="text-align: left;  width: 20%; border-left: 1px solid #eee;"> <?php echo app_lang("rate"); ?></th>
-    <th style="text-align: center;  width: 15%; border-left: 1px solid #eee;"> <?php echo app_lang("quantity"); ?></th>
+    <th style="text-align: center;  width: 20%; "> الإجمالي</th>
+    <th style="text-align: center;  width: 20%; border-left: 1px solid #eee;"> <?php echo app_lang("rate"); ?></th>
+    <th style="text-align: center;  width: 15%; border-left: 1px solid #eee;"> الكمية</th>
 
-        <th style="width: 45%; border-left: 1px solid #eee;"> <?php echo app_lang("item"); ?> </th>
+        <th style="width: 45%; border-left: 1px solid #eee;">العنصر </th>
     </tr>
     <?php
     foreach ($invoice_items as $item) {
         ?>
         <tr style="background-color: #f4f4f4; ">
-        <td style="text-align: left; width: 20%; border: 1px solid #fff;"> <?php echo to_currency($item->total, $item->currency_symbol); ?></td>
-        <td style="text-align: left; width: 20%; border: 1px solid #fff;"> <?php echo to_currency($item->rate, $item->currency_symbol); ?></td>
+        <td style="text-align: center; width: 20%; border: 1px solid #fff;"> <?php echo to_currency($item->total, $item->currency_symbol); ?></td>
+        <td style="text-align: center; width: 20%; border: 1px solid #fff;"> <?php echo to_currency($item->rate, $item->currency_symbol); ?></td>
         <td style="text-align: center; width: 15%; border: 1px solid #fff;"> <?php echo $item->quantity . " " . $item->unit_type; ?></td>
 
             <td style="width: 45%; border: 1px solid #fff; padding: 10px;"><?php echo $item->title; ?>
@@ -53,7 +53,7 @@
         <td style="text-align: left; width: 20%; border: 1px solid #fff; background-color: #f4f4f4;">
             <?php echo to_currency($invoice_total_summary->invoice_subtotal, $invoice_total_summary->currency_symbol); ?>
         </td>
-        <td colspan="3" style="text-align: left;"><?php echo app_lang("total"); ?></td>
+        <td colspan="3" style="text-align: left;">الإجمالي</td>
 
     </tr>
     <?php
@@ -66,7 +66,8 @@
         <td style="text-align: left; width: 20%; border: 1px solid #fff; background-color: #f4f4f4;">
                 <?php echo to_currency($invoice_total_summary->tax, $invoice_total_summary->currency_symbol); ?>
             </td>
-            <td colspan="3" style="text-align: left;"><?php echo $invoice_total_summary->tax_name; ?></td>
+          
+            <td colspan="3" style="text-align: left;">ضريبة (<?php echo $invoice_total_summary->tax_percentage ?> %)</td>
             
         </tr>
     <?php } ?>
@@ -98,7 +99,7 @@
         <td style="text-align: left; width: 20%; border: 1px solid #fff; background-color: #f4f4f4;">
                 <?php echo to_currency($invoice_total_summary->total_paid, $invoice_total_summary->currency_symbol); ?>
             </td>
-            <td colspan="3" style="text-align: left;"><?php echo app_lang("paid"); ?></td>
+            <td colspan="3" style="text-align: left;">المدفوع</td>
             
         </tr>
     <?php } ?>
@@ -106,7 +107,7 @@
     <td style="text-align: left; width: 20%; background-color: <?php echo $color; ?>; color: #fff;">
             <?php echo to_currency($invoice_total_summary->balance_due, $invoice_total_summary->currency_symbol); ?>
         </td>
-        <td colspan="3" style="text-align: left;"><?php echo app_lang("balance_due"); ?></td>
+        <td colspan="3" style="text-align: left;">الرصيد المستحق</td>
         
     </tr>
 </table>
