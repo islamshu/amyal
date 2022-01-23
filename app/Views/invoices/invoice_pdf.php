@@ -113,7 +113,37 @@
 <?php } else { ?> <!-- use table to avoid extra spaces -->
     <br /><br /><table class="invoice-pdf-hidden-table" style="border-top: 2px solid #f2f2f2; margin: 0; padding: 0; display: block; width: 100%; height: 10px;"></table>
 <?php } ?>
-<span style="color:#444; line-height: 14px;">
+<span style="color:#444; line-height: 14px;margin-bottom: 40%;" >
     <?php echo get_setting("invoice_footer"); ?>
 </span>
+<p class="" style="visibility: hidden !important;" >
 
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
+
+<p class="" style="visibility: hidden !important;" >
+
+</p><p class="" style="visibility: hidden !important;" >
+
+</p><p class="" style="visibility: hidden !important;" >
+
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
+
+<?php
+
+echo view('invoices/arabic_pdf.php');
+?>
+
+
+ 

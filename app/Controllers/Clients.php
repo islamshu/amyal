@@ -137,6 +137,9 @@ class Clients extends Security_Controller {
             $data["currency"] = $this->request->getPost('currency') ? $this->request->getPost('currency') : "";
             $data["disable_online_payment"] = $this->request->getPost('disable_online_payment') ? $this->request->getPost('disable_online_payment') : 0;
         }
+        if($this->login_user == 'staff'){
+            $data["created_by"] = $this->login_user->id;
+        }
 
         if ($this->login_user->is_admin || get_array_value($this->login_user->permissions, "client") === "all") {
             //user has access to change created by

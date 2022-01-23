@@ -1,4 +1,4 @@
-<a href="<?php echo get_uri('leads'); ?>" class="white-link" >
+<a href="<?php echo get_uri('clients'); ?>" class="white-link" >
     <div class="card dashboard-icon-widget">
         <div class="card-body">
             <div class="widget-icon bg-primary">
@@ -6,7 +6,7 @@
             </div>
             <div class="widget-details">
                 <h1><?php echo $total; ?></h1>
-                <span><?php echo app_lang("leads"); ?></span>
+                <span><?php echo app_lang("clients"); ?></span>
             </div>
         </div>
     </div>

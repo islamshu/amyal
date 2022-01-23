@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Exception;
+
 class Leads extends Security_Controller {
 
     function __construct() {
@@ -14,6 +16,8 @@ class Leads extends Security_Controller {
     /* load leads list view */
 
     function index() {
+   
+      
         $this->access_only_allowed_members();
         $this->check_module_availability("module_lead");
 
@@ -903,17 +907,29 @@ class Leads extends Security_Controller {
     /* upadate a lead status */
 
     function save_lead_status($id = 0) {
+        
         validate_numeric_value($id);
         $this->access_only_allowed_members();
         $this->can_access_this_lead($id);
-
+        
         $data = array(
             "lead_status_id" => $this->request->getPost('value')
         );
 
-        $save_id = $this->Clients_model->ci_save($data, $id);
+        
+        if($this->request->getPost('value') == 4){
+            
+            $dataa = array(
+                "is_lead" => 0
+            );
+             $this->Clients_model->ci_save($dataa, $id);
 
-        if ($save_id) {
+            
+           
+        }
+        $saving = $this->Clients_model->ci_save($data, $id);
+       
+        if ($saving) {
             echo json_encode(array("success" => true, "data" => $this->_row_data($save_id), 'id' => $save_id, "message" => app_lang('record_saved')));
         } else {
             echo json_encode(array("success" => false, app_lang('error_occurred')));

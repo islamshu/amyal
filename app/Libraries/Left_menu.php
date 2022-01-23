@@ -268,6 +268,9 @@ class Left_menu {
                 $sidebar_menu["events"] = array("name" => "events", "url" => "events", "class" => "calendar");
             }
 
+            if (get_setting("module_lead") == "1" && ($this->ci->login_user->is_admin || $access_lead)) {
+                $sidebar_menu["leads"] = array("name" => "leads", "url" => "leads", "class" => "layers");
+            }
 
             if ($this->ci->login_user->is_admin || $access_client) {
                 $sidebar_menu["clients"] = array("name" => "clients", "url" => "clients", "class" => "briefcase");
@@ -277,9 +280,7 @@ class Left_menu {
             $sidebar_menu["projects"] = array("name" => "projects", "url" => "projects/all_projects", "class" => "grid");
             $sidebar_menu["tasks"] = array("name" => "tasks", "url" => "projects/all_tasks", "class" => "check-circle");
 
-            if (get_setting("module_lead") == "1" && ($this->ci->login_user->is_admin || $access_lead)) {
-                $sidebar_menu["leads"] = array("name" => "leads", "url" => "leads", "class" => "layers");
-            }
+            
 
 
             $show_payments_menu = false;

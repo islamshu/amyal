@@ -13,6 +13,7 @@ class Dashboard extends Security_Controller {
     }
 
     public function index() {
+        
         $widgets = $this->_check_widgets_permissions();
 
         $view_data["dashboards"] = array();

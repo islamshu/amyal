@@ -399,6 +399,72 @@ class Clients_model extends Crud_model {
         WHERE $clients_table.deleted=0 AND $clients_table.is_lead=0 $where";
         return $this->db->query($sql)->getRow()->total;
     }
+    function count_total_staff_lead($options = array(),$id_user) {
+        $clients_table = $this->db->prefixTable('clients');
+        $tickets_table = $this->db->prefixTable('tickets');
+        $invoices_table = $this->db->prefixTable('invoices');
+        $invoice_payments_table = $this->db->prefixTable('invoice_payments');
+        $invoice_items_table = $this->db->prefixTable('invoice_items');
+        $taxes_table = $this->db->prefixTable('taxes');
+        $projects_table = $this->db->prefixTable('projects');
+        $estimates_table = $this->db->prefixTable('estimates');
+        $estimate_requests_table = $this->db->prefixTable('estimate_requests');
+        $orders_table = $this->db->prefixTable('orders');
+        $proposals_table = $this->db->prefixTable('proposals');
+
+        $where = "";
+
+        $show_own_clients_only_user_id = get_array_value($options, "show_own_clients_only_user_id");
+        if ($show_own_clients_only_user_id) {
+            $where .= " AND $clients_table.created_by=$show_own_clients_only_user_id";
+        }
+
+        $filter = get_array_value($options, "filter");
+        if ($filter) {
+            $where .= $this->make_quick_filter_query($filter, $clients_table, $projects_table, $invoices_table, $taxes_table, $invoice_payments_table, $invoice_items_table, $estimates_table, $estimate_requests_table, $tickets_table, $orders_table, $proposals_table);
+        }
+
+        $client_groups = get_array_value($options, "client_groups");
+        $where .= $this->prepare_allowed_client_groups_query($clients_table, $client_groups);
+
+        $sql = "SELECT COUNT($clients_table.id) AS total
+        FROM $clients_table 
+        WHERE $clients_table.deleted=0 AND $clients_table.is_lead=1 And $clients_table.owner_id=$id_user $where";
+        return $this->db->query($sql)->getRow()->total;
+    }
+    function count_total_staff_clients($options = array(),$id_user) {
+        $clients_table = $this->db->prefixTable('clients');
+        $tickets_table = $this->db->prefixTable('tickets');
+        $invoices_table = $this->db->prefixTable('invoices');
+        $invoice_payments_table = $this->db->prefixTable('invoice_payments');
+        $invoice_items_table = $this->db->prefixTable('invoice_items');
+        $taxes_table = $this->db->prefixTable('taxes');
+        $projects_table = $this->db->prefixTable('projects');
+        $estimates_table = $this->db->prefixTable('estimates');
+        $estimate_requests_table = $this->db->prefixTable('estimate_requests');
+        $orders_table = $this->db->prefixTable('orders');
+        $proposals_table = $this->db->prefixTable('proposals');
+
+        $where = "";
+
+        $show_own_clients_only_user_id = get_array_value($options, "show_own_clients_only_user_id");
+        if ($show_own_clients_only_user_id) {
+            $where .= " AND $clients_table.created_by=$show_own_clients_only_user_id";
+        }
+
+        $filter = get_array_value($options, "filter");
+        if ($filter) {
+            $where .= $this->make_quick_filter_query($filter, $clients_table, $projects_table, $invoices_table, $taxes_table, $invoice_payments_table, $invoice_items_table, $estimates_table, $estimate_requests_table, $tickets_table, $orders_table, $proposals_table);
+        }
+
+        $client_groups = get_array_value($options, "client_groups");
+        $where .= $this->prepare_allowed_client_groups_query($clients_table, $client_groups);
+
+        $sql = "SELECT COUNT($clients_table.id) AS total
+        FROM $clients_table 
+        WHERE $clients_table.deleted=0 AND $clients_table.is_lead=0 And $clients_table.created_by=$id_user $where";
+        return $this->db->query($sql)->getRow()->total;
+    }
 
     function get_conversion_rate_with_currency_symbol() {
         $clients_table = $this->db->prefixTable('clients');

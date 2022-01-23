@@ -59,14 +59,18 @@
             </div>
         <?php } ?>
 
-        <?php if ($show_timeline) { ?>
+     
             <div class="col-md-<?php echo $widget_column; ?> col-sm-6  widget-container">
                 <?php
                 echo new_posts_widget();
                 ?>  
             </div>
-        <?php } ?>
-
+            <div class="col-md-<?php echo $widget_column; ?> col-sm-6  widget-container">
+                <?php
+                echo new_clients_widget();
+                ?>  
+            </div>
+     
     </div>
 
     <div class="row">

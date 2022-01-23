@@ -18,6 +18,7 @@
         <ul id="sidebar-menu" class="sidebar-menu">
             <?php
             if (!$is_preview) {
+
                 $sidebar_menu = get_active_menu($sidebar_menu);
             }
 

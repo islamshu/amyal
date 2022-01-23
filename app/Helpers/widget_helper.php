@@ -221,11 +221,34 @@ if (!function_exists('new_posts_widget')) {
             }
         }
 
-        $view_data["total"] = $ci->Posts_model->count_new_posts($allowed_member_ids);
+        $view_data["total"] = $ci->Clients_model->count_total_staff_lead($allowed_member_ids, $ci->login_user->id);
         $template = new Template();
         return $template->view("timeline/new_posts_widget", $view_data);
     }
 
+}
+if (!function_exists('new_clients_widget')) {
+function new_clients_widget(){
+    $ci = new Security_Controller(false);
+
+    //allowed on specific member/teams only
+    $allowed_member_ids = "";
+    $permissions = $ci->login_user->permissions;
+    $module_permission = get_array_value($permissions, "timeline_permission_specific");
+
+    if ($module_permission) {
+        $permissions = explode(",", $module_permission);
+        $allowed_members = prepare_allowed_members_array($permissions, $ci->login_user->id);
+        if ($allowed_members) {
+            $allowed_member_ids = implode(',', $allowed_members);
+        }
+    }
+
+    $view_data["total"] = $ci->Clients_model->count_total_staff_clients($allowed_member_ids, $ci->login_user->id);
+    $template = new Template();
+    return $template->view("timeline/new_clients_widget", $view_data);
+
+}
 }
 
 
