@@ -114,26 +114,36 @@ class Leads extends Security_Controller {
             "lead_source_id" => $this->request->getPost('lead_source_id'),
             "owner_id" => $this->request->getPost('owner_id') ? $this->request->getPost('owner_id') : $this->login_user->id
         );
-        if($this->request->getPost('lead_status_id') == 4){
-            $data["is_lead"] =0;    
-        }
+     
+        // if($this->request->getPost('lead_status_id') == 4){
+            
+        //   $data["is_lead"] = 0;
+          
+        // }else
+        // {
+        //     $data["is_lead"] = 1; 
+        // }
+        // // die(json_encode($data));
 
-        if (!$client_id) {
-            $data["created_date"] = get_current_utc_time();
-        }
+        // if (!$client_id) {
+            
+        //     $data["created_date"] = get_current_utc_time();
+        // }
 
 
         $data = clean_data($data);
 
-        $save_id = $this->Clients_model->ci_save($data, $client_id);
-        if ($save_id) {
-            save_custom_fields("leads", $save_id, $this->login_user->is_admin, $this->login_user->user_type);
+        $save_idd = $this->Clients_model->ci_save($data, $client_id);
+        
+        if ($save_idd) {
+         
+            save_custom_fields("leads", $save_idd, $this->login_user->is_admin, $this->login_user->user_type);
 
             if (!$client_id) {
-                log_notification("lead_created", array("lead_id" => $save_id), $this->login_user->id);
+                log_notification("lead_created", array("lead_id" => $save_idd), $this->login_user->id);
             }
 
-            echo json_encode(array("success" => true, "data" => $this->_row_data($save_id), 'id' => $save_id, 'view' => $this->request->getPost('view'), 'message' => app_lang('record_saved')));
+            echo json_encode(array("success" => true, "data" => $this->_row_data($save_idd), 'id' => $save_idd, 'view' => $this->request->getPost('view'), 'message' => app_lang('record_saved')));
         } else {
             echo json_encode(array("success" => false, 'message' => app_lang('error_occurred')));
         }
