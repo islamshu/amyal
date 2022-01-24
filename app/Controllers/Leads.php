@@ -125,10 +125,10 @@ class Leads extends Security_Controller {
         // }
         // // die(json_encode($data));
 
-        // if (!$client_id) {
+        if (!$client_id) {
             
-        //     $data["created_date"] = get_current_utc_time();
-        // }
+            $data["created_date"] = get_current_utc_time();
+        }
 
 
         $data = clean_data($data);
@@ -138,6 +138,8 @@ class Leads extends Security_Controller {
         if ($save_idd) {
          
             save_custom_fields("leads", $save_idd, $this->login_user->is_admin, $this->login_user->user_type);
+            
+       
 
             if (!$client_id) {
                 log_notification("lead_created", array("lead_id" => $save_idd), $this->login_user->id);

@@ -139,7 +139,18 @@
 <p class="" style="visibility: hidden !important;" >
 
 </p>
+</p><p class="" style="visibility: hidden !important;" >
 
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
 <?php
 
 echo view('invoices/arabic_pdf.php');

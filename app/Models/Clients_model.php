@@ -475,6 +475,22 @@ class Clients_model extends Crud_model {
         GROUP BY $clients_table.currency";
         return $this->db->query($sql);
     }
+    public function update_status($id)
+        {
+            $clients_table = $this->db->prefixTable('clients');
+
+            $data = array(
+                'is_lead' => 0,
+               
+            );
+            
+        $this->db->where('id', $id);
+
+        $this->db->update($clients_table, $data);
+
+            
+
+        }
 
     function count_total_leads($show_own_leads_only_user_id = "") {
         $clients_table = $this->db->prefixTable('clients');
