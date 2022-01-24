@@ -114,7 +114,7 @@ class Leads extends Security_Controller {
             "lead_source_id" => $this->request->getPost('lead_source_id'),
             "owner_id" => $this->request->getPost('owner_id') ? $this->request->getPost('owner_id') : $this->login_user->id
         );
-        if($this->request->getPost('state') == 4){
+        if($this->request->getPost('lead_status_id') == 4){
             $data["is_lead"] =0;    
         }
 
