@@ -8,5 +8,5 @@ if (isset($invoice_info->custom_fields) && $invoice_info->custom_fields) {
     }
 }
 ?>
-<span> تاريخ الفاتورة<?php ": " . format_to_date($invoice_info->bill_date, false); ?></span><br />
-<span> تاريخ الإستحقاق<?php ": " . format_to_date($invoice_info->due_date, false); ?></span>
+<span><?php echo 'تاريخ الفاتورة' . ": " . format_to_date($invoice_info->bill_date, false); ?></span><br />
+<span><?php echo 'تاريخ الاستحقاق' . ": " . format_to_date($invoice_info->due_date, false); ?></span>
