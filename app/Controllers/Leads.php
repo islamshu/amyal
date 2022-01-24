@@ -114,6 +114,9 @@ class Leads extends Security_Controller {
             "lead_source_id" => $this->request->getPost('lead_source_id'),
             "owner_id" => $this->request->getPost('owner_id') ? $this->request->getPost('owner_id') : $this->login_user->id
         );
+        if($this->request->getPost('state') == 4){
+            $data["is_lead"] =0;    
+        }
 
         if (!$client_id) {
             $data["created_date"] = get_current_utc_time();
