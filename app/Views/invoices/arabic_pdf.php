@@ -126,3 +126,38 @@
 <span style="color:#444; line-height: 14px;margin-bottom: 40%;" >
     <?php echo get_setting("invoice_footer"); ?>
 </span>
+<span style="color:#444; line-height: 14px;margin-bottom: 40%;text-align: right" class="right" >
+   <h3>الحساب البنكي :</h3>
+</span>
+<table style="width:70%;right:10;text-align: right" class="left">
+
+  <tr style="  border: 1px solid black;text-align: right">
+
+
+    <td style="  width: 30%;text-align: right;"> </td>
+    <td style=" width: 30%;text-align: right;"> </td>
+    <td style="  border: 1px solid black;width: 60%;text-align: right;">مصرف الإنماء</td>
+    <td style="  border: 1px solid black;width: 30%;text-align: right;">اسم البنك</td>
+
+
+  </tr>
+  <tr>
+ 
+
+  
+  <td style="  width: 30%;text-align: right;"> </td>
+  <td style=" width: 30%;text-align: right;"> </td>
+  <td style="  border: 1px solid black;width: 60%;text-align: right;">شركة أميال الذكية</td>
+  <td style="border: 1px solid black;width: 30%;text-align: right;"> اسم الحساب</td>
+  </tr>
+  <tr>
+ 
+
+ 
+  <td style="  width: 30%;text-align: right;"> </td>
+  <td style=" width: 30%;text-align: right;"> </td>
+  <td style="  border: 1px solid black;width: 60%;text-align: right;">SA 3105000068203365594000</td>
+  <td style="  border: 1px solid black;width: 30%;text-align: right;"> رقم الأيبان</td>
+
+  </tr>
+</table>

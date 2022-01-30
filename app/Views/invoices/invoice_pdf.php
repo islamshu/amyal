@@ -116,6 +116,36 @@
 <span style="color:#444; line-height: 14px;margin-bottom: 40%;" >
     <?php echo get_setting("invoice_footer"); ?>
 </span>
+<span style="color:#444; line-height: 14px;margin-bottom: 40%;" >
+   <h3>Bank Info</h3>
+</span>
+<table style="width:70%;">
+
+  <tr style="  border: 1px solid black;">
+    <td style="  border: 1px solid black;width: 30%;">Bank Name</td>
+    <td style="  border: 1px solid black;width: 60%">ALINMA Bank</td>
+  </tr>
+  <tr>
+  <td style="border: 1px solid black;width: 30%;">Acount Name</td>
+    <td style="  border: 1px solid black;width: 60%">شركة أميال الذكية</td>
+  </tr>
+  <tr>
+  <td style="  border: 1px solid black;width: 30%;">IBAN Number</td>
+    <td style="  border: 1px solid black;width: 60%">SA 3105000068203365594000</td>
+  </tr>
+</table>
+<!-- <table class="table-responsive" style="width: 90%; color: #444; direction: ltr !important; text-align: left;border: 1px solid black;">
+<tr style="font-weight: bold;  color: #fff;  ">
+    <th style="border: 1px solid black;text-align: center; background-color: <?php echo $color; ?>;  width: 30%; ">Bank Name</th>
+    <th style="border: 1px solid black;text-align: center; background-color: white;  width: 60%; color: black; ">Alinma Bank</th>
+</tr>
+<tr style="font-weight: bold;  color: #fff;  ">
+    <th style="border: 1px solid black;text-align: center; background-color: <?php echo $color; ?>;  width: 30%; ">Account Name</th>
+    <th style="border: 1px solid ;text-align: center; background-color: white;  width: 50%; color: black; ">شركة أميال الذكية للخدمات اللوجستية شركة شخص واحد</th>
+</tr>
+
+</table> -->
+
 <p class="" style="visibility: hidden !important;" >
 
 </p>
@@ -139,18 +169,7 @@
 <p class="" style="visibility: hidden !important;" >
 
 </p>
-</p><p class="" style="visibility: hidden !important;" >
 
-</p>
-<p class="" style="visibility: hidden !important;" >
-
-</p>
-<p class="" style="visibility: hidden !important;" >
-
-</p>
-<p class="" style="visibility: hidden !important;" >
-
-</p>
 <?php
 
 echo view('invoices/arabic_pdf.php');
