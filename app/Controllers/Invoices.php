@@ -714,7 +714,6 @@ class Invoices extends Security_Controller {
         $invoice_id = $this->request->getPost('invoice_id');
       
         $Val = $this->Items_model->get_title_ar( $this->request->getPost('invoice_item_title'));
-        $Val = $this->Items_model->get_discripton_ar( $this->request->getPost('invoice_item_title'));
 
         
     
@@ -723,11 +722,13 @@ class Invoices extends Security_Controller {
         $id = $this->request->getPost('id');
         $rate = unformat_currency($this->request->getPost('invoice_item_rate'));
         $quantity = unformat_currency($this->request->getPost('invoice_item_quantity'));
-
         $invoice_item_data = array(
             "invoice_id" => $invoice_id,
             "title" => $this->request->getPost('invoice_item_title'),
             "title_ar" => $Val,
+            "description" => $this->request->getPost('invoice_item_description'), 
+            "description_ar" => $this->request->getPost('invoice_item_description_ar'), 
+
             "quantity" => $quantity,
             "unit_type" => $this->request->getPost('invoice_unit_type'),
             "rate" => unformat_currency($this->request->getPost('invoice_item_rate')),
@@ -867,7 +868,6 @@ class Invoices extends Security_Controller {
             $suggestion[] = array("id" => $item->title, "text" => $item->title);
         }
 
-        // $suggestion[] = array("id" => "+", "text" => "+ " . app_lang("create_new_item"));
 
         echo json_encode($suggestion);
     }

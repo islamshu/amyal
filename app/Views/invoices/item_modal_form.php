@@ -41,6 +41,22 @@
         </div>
         <div class="form-group">
             <div class="row">
+                <label for="invoice_item_description" class="col-md-3"><?php echo app_lang('description_ar'); ?></label>
+                <div class=" col-md-9">
+                    <?php
+                    echo form_textarea(array(
+                        "id" => "invoice_item_description_ar",
+                        "name" => "invoice_item_description_ar",
+                        "value" => $model_info->invoice_item_description_ar ? $model_info->invoice_item_description_ar : "",
+                        "class" => "form-control",
+                        "placeholder" => app_lang('description_ar')
+                    ));
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
                 <label for="invoice_item_quantity" class=" col-md-3"><?php echo app_lang('quantity'); ?></label>
                 <div class="col-md-9">
                     <?php
