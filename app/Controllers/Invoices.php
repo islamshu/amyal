@@ -322,7 +322,9 @@ class Invoices extends Security_Controller {
             $invoice_item_data = array(
                 "invoice_id" => $invoice_id,
                 "title" => $data->title ? $data->title : "",
+                "title_ar" => $data->title_ar ? $data->title_ar : "",
                 "description" => $data->description ? $data->description : "",
+                "description_ar" => $data->description_ar ? $data->description_ar : "",
                 "quantity" => $data->quantity ? $data->quantity : 0,
                 "unit_type" => $data->unit_type ? $data->unit_type : "",
                 "rate" => $data->rate ? $data->rate : 0,
@@ -710,6 +712,13 @@ class Invoices extends Security_Controller {
         ));
 
         $invoice_id = $this->request->getPost('invoice_id');
+      
+        $Val = $this->Items_model->get_title_ar( $this->request->getPost('invoice_item_title'));
+        $Val = $this->Items_model->get_discripton_ar( $this->request->getPost('invoice_item_title'));
+
+        
+    
+    
 
         $id = $this->request->getPost('id');
         $rate = unformat_currency($this->request->getPost('invoice_item_rate'));
@@ -718,7 +727,7 @@ class Invoices extends Security_Controller {
         $invoice_item_data = array(
             "invoice_id" => $invoice_id,
             "title" => $this->request->getPost('invoice_item_title'),
-            "description" => $this->request->getPost('invoice_item_description'),
+            "title_ar" => $Val,
             "quantity" => $quantity,
             "unit_type" => $this->request->getPost('invoice_unit_type'),
             "rate" => unformat_currency($this->request->getPost('invoice_item_rate')),
@@ -858,7 +867,7 @@ class Invoices extends Security_Controller {
             $suggestion[] = array("id" => $item->title, "text" => $item->title);
         }
 
-        $suggestion[] = array("id" => "+", "text" => "+ " . app_lang("create_new_item"));
+        // $suggestion[] = array("id" => "+", "text" => "+ " . app_lang("create_new_item"));
 
         echo json_encode($suggestion);
     }

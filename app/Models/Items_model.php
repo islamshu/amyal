@@ -10,7 +10,24 @@ class Items_model extends Crud_model {
         $this->table = 'items';
         parent::__construct($this->table);
     }
+     function get_title_ar($title)
+    {
+   
+        $items_table = $this->db->prefixTable('items');
 
+      
+
+        $where = "";
+
+        $sql = "SELECT $items_table.title_ar
+        FROM $items_table
+        WHERE $items_table.title LIKE '%$title%' $where";
+
+        $val = $this->db->query($sql)->getRow('title_ar');
+        $first =($val);
+       
+        return $first;
+    }
     function get_details($options = array()) {
         $items_table = $this->db->prefixTable('items');
         $order_items_table = $this->db->prefixTable('order_items');

@@ -33,6 +33,25 @@
             </div>
             <div class="form-group">
                 <div class="row">
+                    <label for="title" class=" col-md-3"><?php echo app_lang('title_ar'); ?></label>
+                    <div class="col-md-9">
+                        <?php
+                        echo form_input(array(
+                            "id" => "title_ar",
+                            "name" => "title_ar",
+                            "value" => $model_info->title_ar,
+                            "class" => "form-control validate-hidden",
+                            "placeholder" => app_lang('title_ar'),
+                            "autofocus" => true,
+                            "data-rule-required" => true,
+                            "data-msg-required" => app_lang("field_required"),
+                        ));
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
                     <label for="description" class="col-md-3"><?php echo app_lang('description'); ?></label>
                     <div class=" col-md-9">
                         <?php
@@ -42,6 +61,23 @@
                             "value" => $model_info->description ? $model_info->description : "",
                             "class" => "form-control",
                             "placeholder" => app_lang('description'),
+                            "data-rich-text-editor" => true
+                        ));
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label for="description" class="col-md-3"><?php echo app_lang('description'); ?></label>
+                    <div class=" col-md-9">
+                        <?php
+                        echo form_textarea(array(
+                            "id" => "description_ar",
+                            "name" => "description_ar",
+                            "value" => $model_info->description_ar ? $model_info->description_ar : "",
+                            "class" => "form-control",
+                            "placeholder" => app_lang('description_ar'),
                             "data-rich-text-editor" => true
                         ));
                         ?>

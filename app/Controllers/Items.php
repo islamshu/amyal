@@ -81,6 +81,7 @@ class Items extends Security_Controller {
         $item_data = array(
             "title" => $this->request->getPost('title'),
             "description" => $this->request->getPost('description'),
+            "description_ar" => $this->request->getPost('descripion_ar'),
             "category_id" => $this->request->getPost('category_id'),
             "unit_type" => $this->request->getPost('unit_type'),
             "rate" => unformat_currency($this->request->getPost('item_rate')),
