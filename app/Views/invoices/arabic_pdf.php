@@ -12,7 +12,7 @@
     );
 
     if ($invoice_style === "style_2") {
-        echo view('invoices/invoice_parts/header_style_2.php', $data);
+        echo view('invoices/invoice_parts/header_style_1_arabic.php', $data);
     } else {
         echo view('invoices/invoice_parts/header_style_1_arabic.php', $data);
     }
