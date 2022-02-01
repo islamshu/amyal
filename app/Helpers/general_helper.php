@@ -1012,9 +1012,10 @@ if (!function_exists('get_invoice_id')) {
 
     function get_invoice_id($invoice_id) {
         $id = $invoice_id -1;
-        $prefix = get_setting("invoice_prefix");
-        $prefix = '#'.'MA202212';
-        return $prefix . $id ;
+        // $prefix = get_setting("invoice_prefix");
+        $number = 20221200   + ($id);
+        $prefix = '#'.'Am'.$number;
+        return $prefix ;
     }
 
 }
