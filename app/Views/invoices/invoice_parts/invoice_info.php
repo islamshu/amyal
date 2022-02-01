@@ -1,4 +1,4 @@
-<span class="invoice-info-title" style="font-size:20px; font-weight: bold;background-color: <?php echo $color; ?>; color: #fff;">&nbsp;<?php echo get_invoice_id($invoice_info->id); ?>&nbsp;</span>
+<span class="invoice-info-title" style="font-size:16px; font-weight: bold;background-color: <?php echo $color; ?>; color: #fff;">&nbsp;<?php echo get_invoice_id($invoice_info->id); ?>&nbsp;</span>
 <div style="line-height: 10px;"></div><?php
 if (isset($invoice_info->custom_fields) && $invoice_info->custom_fields) {
     foreach ($invoice_info->custom_fields as $field) {
