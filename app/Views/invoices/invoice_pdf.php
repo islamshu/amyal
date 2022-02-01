@@ -14,18 +14,10 @@ echo view('invoices/arabic_pdf.php');
 
 </p><p class="" style="visibility: hidden !important;" >
 
-</p><p class="" style="visibility: hidden !important;" >
 
-</p>
-<p class="" style="visibility: hidden !important;" >
 
-</p>
-<p class="" style="visibility: hidden !important;" >
 
-</p>
-<p class="" style="visibility: hidden !important;" >
 
-</p>
 <div style=" margin: auto;">
     <?php
     $color = get_setting("invoice_color");
