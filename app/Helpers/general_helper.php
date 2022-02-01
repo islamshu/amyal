@@ -1011,9 +1011,10 @@ if (!function_exists('prepare_order_pdf')) {
 if (!function_exists('get_invoice_id')) {
 
     function get_invoice_id($invoice_id) {
+        $id = $invoice_id -1;
         $prefix = get_setting("invoice_prefix");
-        $prefix = $prefix ? $prefix : strtoupper(app_lang("invoice")) . " #";
-        return $prefix . $invoice_id;
+        $prefix = '#'.'MA202212';
+        return $prefix . $id ;
     }
 
 }
