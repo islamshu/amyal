@@ -154,10 +154,10 @@ $lang["select_a_team"] = "Выбрать команду";
 $lang["dashboard"] = "Аналитика";
 
 /* посещаемость */
-$lang["add_attendance"] = "Добавить время вручную";
-$lang["edit_attendance"] = "Редактировать карточку учета рабочего времени";
-$lang["delete_attendance"] = "Удалить карточку учета рабочего времени";
-$lang["attendance"] = "Тайминг";
+$lang["add_attendancenew"] = "Добавить время вручную";
+$lang["edit_attendancenew"] = "Редактировать карточку учета рабочего времени";
+$lang["delete_attendancenew"] = "Удалить карточку учета рабочего времени";
+$lang["attendancenew"] = "Тайминг";
 $lang["clock_in"] = "Начать работу";
 $lang["clock_out"] = "Закончить работу";
 $lang["in_date"] = "Дата начала";

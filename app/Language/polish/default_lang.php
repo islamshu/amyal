@@ -153,11 +153,11 @@ $lang["select_a_team"] = "Wybierz zespół";
 /* dashboard */
 $lang["dashboard"] = "Pulpit nawigacyjny";
 
-/* attendance */
-$lang["add_attendance"] = "Dodaj czas ręcznie";
-$lang["edit_attendance"] = "Edytuj kartę czasu";
-$lang["delete_attendance"] = "Usuń kartę czasu";
-$lang["attendance"] = "Karty czasowe";
+/* attendancenew */
+$lang["add_attendancenew"] = "Dodaj czas ręcznie";
+$lang["edit_attendancenew"] = "Edytuj kartę czasu";
+$lang["delete_attendancenew"] = "Usuń kartę czasu";
+$lang["attendancenew"] = "Karty czasowe";
 $lang["clock_in"] = "Zegar w";
 $lang["clock_out"] = "Clock Out";
 $lang["in_date"] = "In Date";

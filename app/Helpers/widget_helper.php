@@ -11,9 +11,9 @@ if (!function_exists('clock_widget')) {
 
     function clock_widget() {
         $ci = new Security_Controller(false);
-        $view_data["clock_status"] = $ci->Attendance_model->current_clock_in_record($ci->login_user->id);
+        $view_data["clock_status"] = $ci->Attendancenew_model->current_clock_in_record($ci->login_user->id);
         $template = new Template();
-        return $template->view("attendance/clock_widget", $view_data);
+        return $template->view("attendancenew/clock_widget", $view_data);
     }
 
 }
@@ -501,7 +501,7 @@ if (!function_exists('timecard_statistics_widget')) {
         $start_date = date("Y-m-", strtotime($today)) . "01";
         $end_date = date("Y-m-t", strtotime($today));
         $options = array("start_date" => $start_date, "end_date" => $end_date, "user_id" => $ci->login_user->id);
-        $timesheets_result = $ci->Attendance_model->get_timecard_statistics($options)->getResult();
+        $timesheets_result = $ci->Attendancenew_model->get_timecard_statistics($options)->getResult();
         $days_of_month = date("t", strtotime($today));
 
         for ($i = 0; $i <= $days_of_month; $i++) {
@@ -523,7 +523,7 @@ if (!function_exists('timecard_statistics_widget')) {
         $view_data["timecards"] = json_encode($timecards_array);
         $view_data["ticks"] = json_encode($ticks);
         $template = new Template();
-        return $template->view("attendance/timecard_statistics", $view_data);
+        return $template->view("attendancenew/timecard_statistics", $view_data);
     }
 
 }
@@ -537,12 +537,12 @@ if (!function_exists('timecard_statistics_widget')) {
 if (!function_exists('count_clock_status_widget')) {
 
     function count_clock_status_widget() {
-        $Attendance_model = model("App\Models\Attendance_model");
-        $info = $Attendance_model->count_clock_status();
+        $Attendancenew_model = model("App\Models\Attendancenew_model");
+        $info = $Attendancenew_model->count_clock_status();
         $view_data["members_clocked_in"] = $info->members_clocked_in ? $info->members_clocked_in : 0;
         $view_data["members_clocked_out"] = $info->members_clocked_out ? $info->members_clocked_out : 0;
         $template = new Template();
-        return $template->view("attendance/count_clock_status_widget", $view_data);
+        return $template->view("attendancenew/count_clock_status_widget", $view_data);
     }
 
 }
@@ -597,7 +597,7 @@ if (!function_exists('count_total_time_widget')) {
         $permissions = $ci->login_user->permissions;
 
         $view_data["show_total_hours_worked"] = false;
-        if (get_setting("module_attendance") == "1" && ($ci->login_user->is_admin || get_array_value($permissions, "attendance"))) {
+        if (get_setting("module_attendancenew") == "1" && ($ci->login_user->is_admin || get_array_value($permissions, "attendancenew"))) {
             $view_data["show_total_hours_worked"] = true;
         }
 
@@ -612,7 +612,7 @@ if (!function_exists('count_total_time_widget')) {
         }
 
         $template = new Template();
-        return $template->view("attendance/total_time_widget", $view_data);
+        return $template->view("attendancenew/total_time_widget", $view_data);
     }
 
 }
@@ -635,7 +635,7 @@ if (!function_exists('count_total_time_widget_small')) {
         $view_data["total_project_hours"] = to_decimal_format($info->timesheet_total / 60 / 60);
         $view_data["widget_type"] = $widget_type;
         $template = new Template();
-        return $template->view("attendance/total_time_widget_small", $view_data);
+        return $template->view("attendancenew/total_time_widget_small", $view_data);
     }
 
 }
@@ -826,11 +826,11 @@ if (!function_exists('completed_projects_widget')) {
 if (!function_exists('count_clock_in_widget')) {
 
     function count_clock_in_widget() {
-        $Attendance_model = model("App\Models\Attendance_model");
-        $info = $Attendance_model->count_clock_status()->members_clocked_in;
+        $Attendancenew_model = model("App\Models\Attendancenew_model");
+        $info = $Attendancenew_model->count_clock_status()->members_clocked_in;
         $view_data["members_clocked_in"] = $info ? $info : 0;
         $template = new Template();
-        return $template->view("attendance/count_clock_in_widget", $view_data);
+        return $template->view("attendancenew/count_clock_in_widget", $view_data);
     }
 
 }
@@ -844,11 +844,11 @@ if (!function_exists('count_clock_in_widget')) {
 if (!function_exists('count_clock_out_widget')) {
 
     function count_clock_out_widget() {
-        $Attendance_model = model("App\Models\Attendance_model");
-        $info = $Attendance_model->count_clock_status()->members_clocked_out;
+        $Attendancenew_model = model("App\Models\Attendancenew_model");
+        $info = $Attendancenew_model->count_clock_status()->members_clocked_out;
         $view_data["members_clocked_out"] = $info ? $info : 0;
         $template = new Template();
-        return $template->view("attendance/count_clock_out_widget", $view_data);
+        return $template->view("attendancenew/count_clock_out_widget", $view_data);
     }
 
 }
@@ -992,7 +992,7 @@ if (!function_exists('clocked_in_team_members_widget')) {
             "only_clocked_in_members" => true
         );
 
-        $view_data["users"] = $ci->Attendance_model->get_details($options)->getResult();
+        $view_data["users"] = $ci->Attendancenew_model->get_details($options)->getResult();
 
         $template = new Template();
         return $template->view("team_members/clocked_in_team_members_widget", $view_data);
@@ -1018,7 +1018,7 @@ if (!function_exists('clocked_out_team_members_widget')) {
             "allowed_members" => get_array_value($data, "allowed_members")
         );
 
-        $view_data["users"] = $ci->Attendance_model->get_clocked_out_members($options)->getResult();
+        $view_data["users"] = $ci->Attendancenew_model->get_clocked_out_members($options)->getResult();
         $template = new Template();
         return $template->view("team_members/clocked_out_team_members_widget", $view_data);
     }

@@ -153,11 +153,11 @@ $lang["select_a_team"] = "Vybrat tým";
 /* dashboard */
 $lang["dashboard"] = "Nástěnka";
 
-/* attendance */
-$lang["add_attendance"] = "Přidat docházku ručně";
-$lang["edit_attendance"] = "Upravit docházku";
-$lang["delete_attendance"] = "Odstranit docházku";
-$lang["attendance"] = "Docházka";
+/* attendancenew */
+$lang["add_attendancenew"] = "Přidat docházku ručně";
+$lang["edit_attendancenew"] = "Upravit docházku";
+$lang["delete_attendancenew"] = "Odstranit docházku";
+$lang["attendancenew"] = "Docházka";
 $lang["clock_in"] = "Označit příchod";
 $lang["clock_out"] = "Označit odchod";
 $lang["in_date"] = "Datum příchodu";

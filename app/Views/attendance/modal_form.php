@@ -1,4 +1,4 @@
-<?php echo form_open(get_uri("attendance/save"), array("id" => "attendance-form", "class" => "general-form", "role" => "form")); ?>
+<?php echo form_open(get_uri("attendancenew/save"), array("id" => "attendancenew-form", "class" => "general-form", "role" => "form")); ?>
 <div class="modal-body clearfix">
     <div class="container-fluid">
         <input type="hidden" name="id" value="<?php echo $model_info->id; ?>" />
@@ -16,7 +16,7 @@
                             <input type="hidden" name="user_id" value="<?php echo $team_members_info->id; ?>" />
                             <?php
                         } else {
-                            echo form_dropdown("user_id", $team_members_dropdown, "", "class='select2 validate-hidden' id='attendance_user_id' data-rule-required='true', data-msg-required='" . app_lang('field_required') . "'");
+                            echo form_dropdown("user_id", $team_members_dropdown, "", "class='select2 validate-hidden' id='attendancenew_user_id' data-rule-required='true', data-msg-required='" . app_lang('field_required') . "'");
                         }
                         ?>
                     </div>
@@ -134,13 +134,13 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#attendance-form").appForm({
+        $("#attendancenew-form").appForm({
             onSuccess: function (result) {
                 $(".dataTable:visible").appTable({newData: result.data, dataId: result.id});
             }
         });
-        if ($("#attendance_user_id").length) {
-            $("#attendance_user_id").select2();
+        if ($("#attendancenew_user_id").length) {
+            $("#attendancenew_user_id").select2();
         }
         setDatePicker("#in_date, #out_date");
 

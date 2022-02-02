@@ -62,8 +62,8 @@
             <li><a role="presentation" href="<?php echo_uri("team_members/projects_info/" . $user_info->id); ?>" data-bs-target="#tab-projects-info"><?php echo app_lang('projects'); ?></a></li>
         <?php } ?> 
 
-        <?php if ($show_attendance) { ?>
-            <li><a role="presentation" href="<?php echo_uri("team_members/attendance_info/" . $user_info->id); ?>" data-bs-target="#tab-attendance-info"> <?php echo app_lang('attendance'); ?></a></li>
+        <?php if ($show_attendancenew) { ?>
+            <li><a role="presentation" href="<?php echo_uri("team_members/attendancenew_info/" . $user_info->id); ?>" data-bs-target="#tab-attendancenew-info"> <?php echo app_lang('attendancenew'); ?></a></li>
         <?php } ?>
 
         <?php if ($show_leave) { ?>
@@ -97,7 +97,7 @@
         <div role="tabpanel" class="tab-pane fade" id="tab-my-preferences"></div>
         <div role="tabpanel" class="tab-pane fade" id="tab-user-left-menu"></div>
         <div role="tabpanel" class="tab-pane fade" id="tab-projects-info"></div>
-        <div role="tabpanel" class="tab-pane fade" id="tab-attendance-info"></div>
+        <div role="tabpanel" class="tab-pane fade" id="tab-attendancenew-info"></div>
         <div role="tabpanel" class="tab-pane fade" id="tab-leave-info"></div>
         <div role="tabpanel" class="tab-pane fade" id="tab-expense-info"></div>
         <?php

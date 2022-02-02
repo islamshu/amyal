@@ -153,11 +153,11 @@ $lang["select_a_team"] = "Selecteer een team";
 /* dashboard */
 $lang["dashboard"] = "Dashboard";
 
-/* attendance */
-$lang["add_attendance"] = "Tijd handmatig toevoegen";
-$lang["edit_attendance"] = "Tijdkaart wijzigen";
-$lang["delete_attendance"] = "Tijdkaart verwijderen";
-$lang["attendance"] = "Tijdkaarten";
+/* attendancenew */
+$lang["add_attendancenew"] = "Tijd handmatig toevoegen";
+$lang["edit_attendancenew"] = "Tijdkaart wijzigen";
+$lang["delete_attendancenew"] = "Tijdkaart verwijderen";
+$lang["attendancenew"] = "Tijdkaarten";
 $lang["clock_in"] = "Klok in";
 $lang["clock_out"] = "Klok uit";
 $lang["in_date"] = "Datum in";

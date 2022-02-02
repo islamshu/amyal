@@ -153,11 +153,11 @@ $lang["select_a_team"] = "Seleziona un team";
 /* dashboard */
 $lang["dashboard"] = "Bacheca";
 
-/* attendance */
-$lang["add_attendance"] = "Aggiungi il tempo manualmente";
-$lang["edit_attendance"] = "Modifica della scheda temporale";
-$lang["delete_attendance"] = "Elimina la scheda temporale";
-$lang["attendance"] = "Time Cards";
+/* attendancenew */
+$lang["add_attendancenew"] = "Aggiungi il tempo manualmente";
+$lang["edit_attendancenew"] = "Modifica della scheda temporale";
+$lang["delete_attendancenew"] = "Elimina la scheda temporale";
+$lang["attendancenew"] = "Time Cards";
 $lang["clock_in"] = "Timbrare Ingresso";
 $lang["clock_out"] = "Timbrare uscita";
 $lang["in_date"] = "Data inizio";

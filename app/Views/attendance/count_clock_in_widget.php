@@ -1,4 +1,4 @@
-<a href="<?php echo get_uri('attendance/index/members_clocked_in'); ?>" class="white-link">
+<a href="<?php echo get_uri('attendancenew/index/members_clocked_in'); ?>" class="white-link">
     <div class="card dashboard-icon-widget">
         <div class="card-body">
             <div class="widget-icon bg-info">

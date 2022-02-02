@@ -6,7 +6,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#clock-in-out-table").appTable({
-            source: '<?php echo_uri("attendance/clock_in_out_list_data/"); ?>',
+            source: '<?php echo_uri("attendancenew/clock_in_out_list_data/"); ?>',
             order: [[0, "asc"]],
             columns: [
                 {title: "<?php echo app_lang("team_members"); ?>"},

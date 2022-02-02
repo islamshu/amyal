@@ -86,7 +86,7 @@ class Security_Controller extends App_Controller {
                 $permissions = explode(",", $module_permission);
 
                 //check the accessable users list
-                if ($group === "leave" || $group === "attendance" || $group === "team_member_update_permission" || $group === "timesheet_manage_permission" || $group == "message_permission" || $group == "timeline_permission") {
+                if ($group === "leave" || $group === "attendancenew" || $group === "team_member_update_permission" || $group === "timesheet_manage_permission" || $group == "message_permission" || $group == "timeline_permission") {
                     $info->allowed_members = prepare_allowed_members_array($permissions, $this->login_user->id);
                 } else if ($group === "ticket") {
                     //check the accessable ticket types

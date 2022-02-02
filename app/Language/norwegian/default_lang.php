@@ -153,11 +153,11 @@ $lang["select_a_team"] = "Velg et team";
 /* dashboard */
 $lang["dashboard"] = "Dashboard";
 
-/* attendance */
-$lang["add_attendance"] = "Legg til tid manuelt";
-$lang["edit_attendance"] = "Rediger tidskort";
-$lang["delete_attendance"] = "Slett tidskort";
-$lang["attendance"] = "Tidskort";
+/* attendancenew */
+$lang["add_attendancenew"] = "Legg til tid manuelt";
+$lang["edit_attendancenew"] = "Rediger tidskort";
+$lang["delete_attendancenew"] = "Slett tidskort";
+$lang["attendancenew"] = "Tidskort";
 $lang["clock_in"] = "klokken i";
 $lang["clock_out"] = "klokken ut";
 $lang["in_date"] = "I dato";

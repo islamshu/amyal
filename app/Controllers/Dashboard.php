@@ -28,7 +28,7 @@ class Dashboard extends Security_Controller {
 
         if ($this->login_user->user_type === "staff" && $this->show_staff_on_staff) {
             $view_data["show_timeline"] = get_array_value($widgets, "new_posts");
-            $view_data["show_attendance"] = get_array_value($widgets, "clock_in_out");
+            $view_data["show_attendancenew"] = get_array_value($widgets, "clock_in_out");
             $view_data["show_event"] = get_array_value($widgets, "events_today");
             $view_data["show_project_timesheet"] = get_array_value($widgets, "my_timesheet_statistics");
             $view_data["show_income_vs_expenses"] = get_array_value($widgets, "income_vs_expenses");
@@ -86,7 +86,7 @@ class Dashboard extends Security_Controller {
         //check which widgets are viewable to current logged in user
         $widget = array();
 
-        $show_attendance = get_setting("module_attendance");
+        $show_attendancenew = get_setting("module_attendancenew");
         $show_invoice = get_setting("module_invoice");
         $show_expense = get_setting("module_expense");
         $show_ticket = get_setting("module_ticket");
@@ -97,7 +97,7 @@ class Dashboard extends Security_Controller {
         $access_expense = $this->get_access_info("expense");
         $access_invoice = $this->get_access_info("invoice");
         $access_ticket = $this->get_access_info("ticket");
-        $access_timecards = $this->get_access_info("attendance");
+        $access_timecards = $this->get_access_info("attendancenew");
         $access_timesheets = $this->get_access_info("timesheet_manage_permission");
         $access_client = $this->get_access_info("client");
         $access_leads = $this->get_access_info("lead");
@@ -105,7 +105,7 @@ class Dashboard extends Security_Controller {
         $widget["new_posts"] = get_setting("module_timeline");
         $widget["my_timesheet_statistics"] = get_setting("module_project_timesheet");
 
-        if ($show_attendance) {
+        if ($show_attendancenew) {
             $widget["clock_in_out"] = true;
             $widget["timecard_statistics"] = true;
         }
@@ -133,7 +133,7 @@ class Dashboard extends Security_Controller {
             $widget["ticket_status"] = true;
         }
 
-        if ($show_attendance && $access_timecards->access_type === "all") {
+        if ($show_attendancenew && $access_timecards->access_type === "all") {
             $widget["clock_status"] = true;
             $widget["members_clocked_in"] = true;
             $widget["members_clocked_out"] = true;
@@ -150,7 +150,7 @@ class Dashboard extends Security_Controller {
             $widget["all_team_members"] = true;
         }
 
-        if ($this->can_view_team_members_list() && $show_attendance && $access_timecards->access_type === "all") {
+        if ($this->can_view_team_members_list() && $show_attendancenew && $access_timecards->access_type === "all") {
             $widget["clocked_in_team_members"] = true;
             $widget["clocked_out_team_members"] = true;
         }
@@ -186,7 +186,7 @@ class Dashboard extends Security_Controller {
             $widget["completed_projects"] = true;
         }
 
-        if (get_setting("module_attendance") == "1" && ($this->login_user->is_admin || $access_timecards->access_type)) {
+        if (get_setting("module_attendancenew") == "1" && ($this->login_user->is_admin || $access_timecards->access_type)) {
             $widget["total_hours_worked"] = true;
         }
 
@@ -801,10 +801,10 @@ class Dashboard extends Security_Controller {
             } else if ($widget == "all_team_members") {
                 return all_team_members_widget();
             } else if ($widget == "clocked_in_team_members") {
-                $this->init_permission_checker("attendance");
+                $this->init_permission_checker("attendancenew");
                 return clocked_in_team_members_widget(array("access_type" => $this->access_type, "allowed_members" => $this->allowed_members));
             } else if ($widget == "clocked_out_team_members") {
-                $this->init_permission_checker("attendance");
+                $this->init_permission_checker("attendancenew");
                 return clocked_out_team_members_widget(array("access_type" => $this->access_type, "allowed_members" => $this->allowed_members));
             } else if ($widget == "latest_online_team_members") {
                 return active_members_and_clients_widget("staff");

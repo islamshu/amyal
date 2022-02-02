@@ -289,41 +289,41 @@
                     <h5><?php echo app_lang("can_manage_team_members_timecards"); ?> <span class="help" data-bs-toggle="tooltip" title="Add, edit and delete time cards"><i data-feather="help-circle" class="icon-14"></i></span></h5>
                     <div>
                         <?php
-                        if (is_null($attendance)) {
-                            $attendance = "";
+                        if (is_null($attendancenew)) {
+                            $attendancenew = "";
                         }
                         echo form_radio(array(
-                            "id" => "attendance_permission_no",
-                            "name" => "attendance_permission",
+                            "id" => "attendancenew_permission_no",
+                            "name" => "attendancenew_permission",
                             "value" => "",
-                            "class" => "attendance_permission toggle_specific form-check-input",
-                                ), $attendance, ($attendance === "") ? true : false);
+                            "class" => "attendancenew_permission toggle_specific form-check-input",
+                                ), $attendancenew, ($attendancenew === "") ? true : false);
                         ?>
-                        <label for="attendance_permission_no"><?php echo app_lang("no"); ?> </label>
+                        <label for="attendancenew_permission_no"><?php echo app_lang("no"); ?> </label>
                     </div>
                     <div>
                         <?php
                         echo form_radio(array(
-                            "id" => "attendance_permission_all",
-                            "name" => "attendance_permission",
+                            "id" => "attendancenew_permission_all",
+                            "name" => "attendancenew_permission",
                             "value" => "all",
-                            "class" => "attendance_permission toggle_specific form-check-input",
-                                ), $attendance, ($attendance === "all") ? true : false);
+                            "class" => "attendancenew_permission toggle_specific form-check-input",
+                                ), $attendancenew, ($attendancenew === "all") ? true : false);
                         ?>
-                        <label for="attendance_permission_all"><?php echo app_lang("yes_all_members"); ?></label>
+                        <label for="attendancenew_permission_all"><?php echo app_lang("yes_all_members"); ?></label>
                     </div>
                     <div class="form-group">
                         <?php
                         echo form_radio(array(
-                            "id" => "attendance_permission_specific",
-                            "name" => "attendance_permission",
+                            "id" => "attendancenew_permission_specific",
+                            "name" => "attendancenew_permission",
                             "value" => "specific",
-                            "class" => "attendance_permission toggle_specific form-check-input",
-                                ), $attendance, ($attendance === "specific") ? true : false);
+                            "class" => "attendancenew_permission toggle_specific form-check-input",
+                                ), $attendancenew, ($attendancenew === "specific") ? true : false);
                         ?>
-                        <label for="attendance_permission_specific"><?php echo app_lang("yes_specific_members_or_teams") . " (" . app_lang("excluding_his_her_time_cards") . ")"; ?>:</label>
+                        <label for="attendancenew_permission_specific"><?php echo app_lang("yes_specific_members_or_teams") . " (" . app_lang("excluding_his_her_time_cards") . ")"; ?>:</label>
                         <div class="specific_dropdown">
-                            <input type="text" value="<?php echo $attendance_specific; ?>" name="attendance_permission_specific" id="attendance_specific_dropdown" class="w100p validate-hidden"  data-rule-required="true" data-msg-required="<?php echo app_lang('field_required'); ?>" placeholder="<?php echo app_lang('choose_members_and_or_teams'); ?>"  />
+                            <input type="text" value="<?php echo $attendancenew_specific; ?>" name="attendancenew_permission_specific" id="attendancenew_specific_dropdown" class="w100p validate-hidden"  data-rule-required="true" data-msg-required="<?php echo app_lang('field_required'); ?>" placeholder="<?php echo app_lang('choose_members_and_or_teams'); ?>"  />
                         </div>
                     </div>
 
@@ -855,7 +855,7 @@
             }
         });
 
-        $("#leave_specific_dropdown, #attendance_specific_dropdown, #timesheet_manage_permission_specific_dropdown,  #team_member_update_permission_specific_dropdown, #message_permission_specific_dropdown, #timeline_permission_specific_dropdown").select2({
+        $("#leave_specific_dropdown, #attendancenew_specific_dropdown, #timesheet_manage_permission_specific_dropdown,  #team_member_update_permission_specific_dropdown, #message_permission_specific_dropdown, #timeline_permission_specific_dropdown").select2({
             multiple: true,
             formatResult: teamAndMemberSelect2Format,
             formatSelection: teamAndMemberSelect2Format,
@@ -880,7 +880,7 @@
         toggle_specific_dropdown();
 
         function toggle_specific_dropdown() {
-            var selectors = [".leave_permission", ".attendance_permission", ".timesheet_manage_permission", ".team_member_update_permission", ".ticket_permission", ".message_permission_specific", ".timeline_permission_specific", ".client_permission"];
+            var selectors = [".leave_permission", ".attendancenew_permission", ".timesheet_manage_permission", ".team_member_update_permission", ".ticket_permission", ".message_permission_specific", ".timeline_permission_specific", ".client_permission"];
             $.each(selectors, function (index, element) {
                 var $element = $(element + ":checked");
                 if ((element !== ".message_permission_specific" && $element.val() === "specific") || (element === ".message_permission_specific" && $element.is(":checked") && !$("#message_permission_specific_area").hasClass("hide"))) {

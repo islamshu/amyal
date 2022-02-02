@@ -57,7 +57,7 @@ class App_Controller extends Controller {
             'Settings_model',
             'Users_model',
             'Team_model',
-            'Attendance_model',
+            'Attendancenew_model',
             'Leave_types_model',
             'Leave_applications_model',
             'Events_model',

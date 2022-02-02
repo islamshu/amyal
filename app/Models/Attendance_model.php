@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-class Attendance_model extends Crud_model {
+class Attendancenew_model extends Crud_model {
 
     protected $table = null;
 
     function __construct() {
-        $this->table = 'attendance';
+        $this->table = 'attendancenew';
         parent::__construct($this->table);
     }
 
     function current_clock_in_record($user_id) {
-        $attendnace_table = $this->db->prefixTable('attendance');
+        $attendnace_table = $this->db->prefixTable('attendancenew');
         $sql = "SELECT $attendnace_table.*
         FROM $attendnace_table
         WHERE $attendnace_table.deleted=0 AND $attendnace_table.user_id=$user_id AND $attendnace_table.status='incomplete'";
@@ -49,7 +49,7 @@ class Attendance_model extends Crud_model {
     }
 
     function get_details($options = array()) {
-        $attendnace_table = $this->db->prefixTable('attendance');
+        $attendnace_table = $this->db->prefixTable('attendancenew');
         $users_table = $this->db->prefixTable('users');
 
         $where = "";
@@ -104,7 +104,7 @@ class Attendance_model extends Crud_model {
     }
 
     function get_summary_details($options = array()) {
-        $attendnace_table = $this->db->prefixTable('attendance');
+        $attendnace_table = $this->db->prefixTable('attendancenew');
         $users_table = $this->db->prefixTable('users');
 
         $where = "";
@@ -169,7 +169,7 @@ class Attendance_model extends Crud_model {
     }
 
     function count_clock_status() {
-        $attendnace_table = $this->db->prefixTable('attendance');
+        $attendnace_table = $this->db->prefixTable('attendancenew');
         $users_table = $this->db->prefixTable('users');
 
         $clocked_in = "SELECT $attendnace_table.user_id
@@ -192,7 +192,7 @@ class Attendance_model extends Crud_model {
     }
 
     function get_timecard_statistics($options = array()) {
-        $attendnace_table = $this->db->prefixTable('attendance');
+        $attendnace_table = $this->db->prefixTable('attendancenew');
 
         $where = "";
         $offset = convert_seconds_to_time_format(get_timezone_offset());
@@ -219,7 +219,7 @@ class Attendance_model extends Crud_model {
     }
 
     function get_clocked_out_members($options = array()) {
-        $attendnace_table = $this->db->prefixTable('attendance');
+        $attendnace_table = $this->db->prefixTable('attendancenew');
         $users_table = $this->db->prefixTable('users');
 
         $where = "";
@@ -247,7 +247,7 @@ class Attendance_model extends Crud_model {
     }
 
     function get_clock_in_out_details_of_all_users($options = array()) {
-        $attendnace_table = $this->db->prefixTable('attendance');
+        $attendnace_table = $this->db->prefixTable('attendancenew');
         $users_table = $this->db->prefixTable('users');
 
         $where = "";
@@ -264,9 +264,9 @@ class Attendance_model extends Crud_model {
             $where .= " AND $users_table.id IN($where_in_implode)";
         }
 
-        $sql = "SELECT CONCAT($users_table.first_name, ' ',$users_table.last_name) AS member_name, $users_table.image, $users_table.id, attendance_table.id AS attendance_id, attendance_table.in_time
+        $sql = "SELECT CONCAT($users_table.first_name, ' ',$users_table.last_name) AS member_name, $users_table.image, $users_table.id, attendancenew_table.id AS attendancenew_id, attendancenew_table.in_time
         FROM $users_table
-        LEFT JOIN (SELECT user_id, id, in_time FROM $attendnace_table WHERE $attendnace_table.deleted=0 AND $attendnace_table.status='incomplete') AS attendance_table ON attendance_table.user_id=$users_table.id
+        LEFT JOIN (SELECT user_id, id, in_time FROM $attendnace_table WHERE $attendnace_table.deleted=0 AND $attendnace_table.status='incomplete') AS attendancenew_table ON attendancenew_table.user_id=$users_table.id
         WHERE $users_table.deleted=0 AND $users_table.status='active' AND $users_table.user_type='staff' $where";
         return $this->db->query($sql);
     }
