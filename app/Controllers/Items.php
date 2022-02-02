@@ -80,6 +80,7 @@ class Items extends Security_Controller {
 
         $item_data = array(
             "title" => $this->request->getPost('title'),
+            "title_ar" => $this->request->getPost('title_ar'),
             "description" => $this->request->getPost('description'),
             "description_ar" => $this->request->getPost('descripion_ar'),
             "category_id" => $this->request->getPost('category_id'),
