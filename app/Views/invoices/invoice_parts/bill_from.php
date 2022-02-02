@@ -15,7 +15,6 @@ $company_vat_number = get_setting("company_vat_number");
         <br>13524 
         <br />Saudi Arabia
         <br />VAT Number:310312014300003
-        <br />Address: Al Olaya - Riyadh
 
         <br />
         <?php // if ($company_vat_number) { 
