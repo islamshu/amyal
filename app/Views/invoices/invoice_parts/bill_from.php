@@ -10,8 +10,9 @@ $company_vat_number = get_setting("company_vat_number");
 <div style="line-height: 3px;"> </div>
 <span class="invoice-meta text-default" style="font-size: 80%; color: #666; width: 100%; ">
   
-              Riyadh
-        <br />13524
+              
+        <br />Riyadh
+        <br>13524 
         <br />Saudi Arabia
         <br />VAT Number:310312014300003
         <br />Address: Al Olaya - Riyadh

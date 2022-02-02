@@ -5,7 +5,7 @@ echo view('invoices/arabic_pdf.php');
 ?>
 
 <?php
-$arr = ($invoice_items);
+$arr = sizeof($invoice_items);
 ?>
 <?php 
 if($arr < 2 ){
@@ -20,14 +20,20 @@ if($arr < 2 ){
 
 <p class="" style="visibility: hidden !important;" >
 
-</p><p class="" style="visibility: hidden !important;" >
+</p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
 <p class="" style="visibility: hidden !important;" >
 
 </p><p class="" style="visibility: hidden !important;" >
 <p class="" style="visibility: hidden !important;" >
 
 </p><p class="" style="visibility: hidden !important;" >
+<p class="" style="visibility: hidden !important;" >
 
+</p><p class="" style="visibility: hidden !important;" >
+</p>
 <?php }else{ ?>
     <p class="" style="visibility: hidden !important;" >
 
@@ -35,10 +41,14 @@ if($arr < 2 ){
 <p class="" style="visibility: hidden !important;" >
 
 </p>
+<p class="" style="visibility: hidden !important;" >
+
+</p>
 
 <p class="" style="visibility: hidden !important;" >
 
 </p><p class="" style="visibility: hidden !important;" >
+</p>
 
 <?php } ?>
 
