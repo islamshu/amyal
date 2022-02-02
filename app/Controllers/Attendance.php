@@ -87,7 +87,7 @@ class Attendance extends Security_Controller {
     }
 
     //show attendance note modal
-    function note_modal_form($user_id = 0) {
+    function note_modal_form_new($user_id = 0) {
         $this->validate_submitted_data(array(
             "id" => "numeric|required"
         ));
@@ -96,7 +96,7 @@ class Attendance extends Security_Controller {
         $view_data["user_id"] = clean_data($user_id);
 
         $view_data['model_info'] = $this->Attendance_model->get_one($this->request->getPost('id'));
-        return $this->template->view('attendance/note_modal_form', $view_data);
+        return $this->template->view('attendance/note_modal_form_new', $view_data);
     }
 
     //add/edit attendance record
@@ -294,9 +294,9 @@ class Attendance extends Security_Controller {
             $note_title = "";
         }
 
-        $note_link = modal_anchor(get_uri("attendance/note_modal_form"), "<i data-feather='message-circle' class='icon-16'></i>", array("class" => "edit text-muted", "title" => app_lang("note"), "data-post-id" => $data->id));
+        $note_link = modal_anchor(get_uri("attendance/note_modal_form_new"), "<i data-feather='message-circle' class='icon-16'></i>", array("class" => "edit text-muted", "title" => app_lang("note"), "data-post-id" => $data->id));
         if ($data->note) {
-            $note_link = modal_anchor(get_uri("attendance/note_modal_form"), "<i data-feather='message-circle' class='icon-16 icon-fill-secondary'></i>", array("class" => "edit text-muted", "title" => $note_title, "data-modal-title" => app_lang("note"), "data-post-id" => $data->id));
+            $note_link = modal_anchor(get_uri("attendance/note_modal_form_new"), "<i data-feather='message-circle' class='icon-16 icon-fill-secondary'></i>", array("class" => "edit text-muted", "title" => $note_title, "data-modal-title" => app_lang("note"), "data-post-id" => $data->id));
         }
 
 
@@ -524,7 +524,7 @@ class Attendance extends Security_Controller {
             $in_time = format_to_time($data->in_time);
             $in_datetime = format_to_datetime($data->in_time);
             $status = "<div class='mb15' title='$in_datetime'>" . app_lang('clock_started_at') . " : $in_time</div>";
-            $view_data = modal_anchor(get_uri("attendance/note_modal_form/$data->id"), "<i data-feather='log-out' class='icon-16'></i> " . app_lang('clock_out'), array("class" => "btn btn-default", "title" => app_lang('clock_out'), "id" => "timecard-clock-out", "data-post-id" => $data->attendance_id, "data-post-clock_out" => 1, "data-post-id" => $data->id));
+            $view_data = modal_anchor(get_uri("attendance/note_modal_form_new/$data->id"), "<i data-feather='log-out' class='icon-16'></i> " . app_lang('clock_out'), array("class" => "btn btn-default", "title" => app_lang('clock_out'), "id" => "timecard-clock-out", "data-post-id" => $data->attendance_id, "data-post-clock_out" => 1, "data-post-id" => $data->id));
         } else {
             $status = "<div class='mb15'>" . app_lang('not_clocked_id_yet') . "</div>";
             $view_data = js_anchor("<i data-feather='log-in' class='icon-16'></i> " . app_lang('clock_in'), array('title' => app_lang('clock_in'), "class" => "btn btn-default spinning-btn", "data-action-url" => get_uri("attendance/log_time/$data->id"), "data-action" => "update", "data-inline-loader" => "1", "data-post-id" => $data->id));

@@ -6,7 +6,7 @@
         <div class="widget-details">
             <?php
             if (isset($clock_status->id)) {
-                echo modal_anchor(get_uri("attendance/note_modal_form"), "<i data-feather='log-out' class='icon-16'></i> " . app_lang('clock_out'), array("class" => "btn btn-default text-primary", "title" => app_lang('clock_out'), "id" => "timecard-clock-out", "data-post-id" => $clock_status->id, "data-post-clock_out" => 1));
+                echo modal_anchor(get_uri("attendance/note_modal_form_new"), "<i data-feather='log-out' class='icon-16'></i> " . app_lang('clock_out'), array("class" => "btn btn-default text-primary", "title" => app_lang('clock_out'), "id" => "timecard-clock-out", "data-post-id" => $clock_status->id, "data-post-clock_out" => 1));
 
                 $in_time = format_to_time($clock_status->in_time);
                 $in_datetime = format_to_datetime($clock_status->in_time);
