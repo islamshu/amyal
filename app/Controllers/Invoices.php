@@ -697,7 +697,7 @@ class Invoices extends Security_Controller {
             $invoice_id = $view_data['model_info']->invoice_id;
         }
         $view_data['invoice_id'] = $invoice_id;
-        die($view_data);
+        die(json_encode($view_data));
         return $this->template->view('invoices/item_modal_form', $view_data);
     }
 
