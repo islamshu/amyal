@@ -1,7 +1,6 @@
 <?php echo form_open(get_uri("invoices/save_item"), array("id" => "invoice-item-form", "class" => "general-form", "role" => "form")); ?>
 <div class="modal-body clearfix">
     <div class="container-fluid">
-        <input type="hidden" name="id" value="<?php echo $model_info->id; ?>" />
         <input type="hidden" name="invoice_id" value="<?php echo $invoice_id; ?>" />
         <input type="hidden" name="add_new_item_to_library" value="" id="add_new_item_to_library" />
         <div class="form-group">
