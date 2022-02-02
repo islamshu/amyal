@@ -860,17 +860,17 @@ class Invoices extends Security_Controller {
     /* prepare suggestion of invoice item */
 
     function get_invoice_item_suggestion() {
-        // $key = $_REQUEST["q"];
-        // $suggestion = array();
+        $key = $_REQUEST["q"];
+        $suggestion = array();
 
-        // $items = $this->Invoice_items_model->get_item_suggestion($key);
+        $items = $this->Invoice_items_model->get_item_suggestion($key);
 
-        // foreach ($items as $item) {
-        //     $suggestion[] = array("id" => $item->title, "text" => $item->title);
-        // }
+        foreach ($items as $item) {
+            $suggestion[] = array("id" => $item->title, "text" => $item->title);
+        }
 
 
-        // echo json_encode($suggestion);
+        echo json_encode($suggestion);
     }
 
     function get_invoice_item_info_suggestion() {
