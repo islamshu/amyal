@@ -688,6 +688,7 @@ class Invoices extends Security_Controller {
         $this->validate_submitted_data(array(
             "id" => "numeric"
         ));
+        die('ddd');
 
         $invoice_id = $this->request->getPost('invoice_id');
 
