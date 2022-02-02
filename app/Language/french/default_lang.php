@@ -153,11 +153,11 @@ $lang["select_a_team"] = "Sélectionnez une équipe";
 /* dashboard */
 $lang["dashboard"] = "Tableau de bord";
 
-/* attendancenew */
-$lang["add_attendancenew"] = "Ajouter l'heure manuellement";
-$lang["edit_attendancenew"] = "Modifier la présence";
-$lang["delete_attendancenew"] = "Supprimer la présence";
-$lang["attendancenew"] = "Présences";
+/* attendance */
+$lang["add_attendance"] = "Ajouter l'heure manuellement";
+$lang["edit_attendance"] = "Modifier la présence";
+$lang["delete_attendance"] = "Supprimer la présence";
+$lang["attendance"] = "Présences";
 $lang["clock_in"] = "Présent";
 $lang["clock_out"] = "Absent";
 $lang["in_date"] = "Date d'arrivée";

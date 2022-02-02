@@ -5,7 +5,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#members-clocked-in-table").appTable({
-            source: '<?php echo_uri("attendancenew/clocked_in_members_list_data/"); ?>',
+            source: '<?php echo_uri("attendance/clocked_in_members_list_data/"); ?>',
             order: [[2, "desc"]],
             columns: [
                 {title: "<?php echo app_lang("team_member"); ?>", "class": "w20p"},

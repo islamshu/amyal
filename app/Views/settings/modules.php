@@ -108,10 +108,10 @@
                     </div>  
                     <div class="form-group">
                         <div class="row">
-                            <label for="module_attendancenew" class="col-md-2 col-xs-8 col-sm-4"><?php echo app_lang('attendancenew'); ?></label>
+                            <label for="module_attendance" class="col-md-2 col-xs-8 col-sm-4"><?php echo app_lang('attendance'); ?></label>
                             <div class="col-md-10 col-xs-4 col-sm-8">
                                 <?php
-                                echo form_checkbox("module_attendancenew", "1", get_setting("module_attendancenew") ? true : false, "id='module_attendancenew' class='form-check-input ml15'");
+                                echo form_checkbox("module_attendance", "1", get_setting("module_attendance") ? true : false, "id='module_attendance' class='form-check-input ml15'");
                                 ?>
                             </div>
                         </div>

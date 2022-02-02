@@ -15,7 +15,7 @@
         $widget_column = "3"; //default bootstrap column class
         $total_hidden = 0;
 
-        if (!$show_attendancenew) {
+        if (!$show_attendance) {
             $total_hidden += 1;
         }
 
@@ -37,7 +37,7 @@
         }
         ?>
 
-        <?php if ($show_attendancenew) { ?>
+        <?php if ($show_attendance) { ?>
             <div class="col-md-<?php echo $widget_column; ?> col-sm-6 widget-container">
                 <?php
                 echo clock_widget();
@@ -118,7 +118,7 @@
                     <?php
                     if ($show_ticket_status) {
                         echo ticket_status_widget();
-                    } else if ($show_attendancenew) {
+                    } else if ($show_attendance) {
                         echo timecard_statistics_widget();
                     }
                     ?>                        

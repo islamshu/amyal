@@ -153,11 +153,11 @@ $lang["select_a_team"] = "Επιλέξτε μία Ομάδα";
 /* dashboard */
 $lang["dashboard"] = "Επισκόπηση";
 
-/* attendancenew */
-$lang["add_attendancenew"] = "Προσθήκη φύλλου";
-$lang["edit_attendancenew"] = "Επεξεργασία φύλλου";
-$lang["delete_attendancenew"] = "Διαγραφή φύλλου";
-$lang["attendancenew"] = "Φύλλο Παρουσίας";
+/* attendance */
+$lang["add_attendance"] = "Προσθήκη φύλλου";
+$lang["edit_attendance"] = "Επεξεργασία φύλλου";
+$lang["delete_attendance"] = "Διαγραφή φύλλου";
+$lang["attendance"] = "Φύλλο Παρουσίας";
 $lang["clock_in"] = "Έναρξη Μέτρησης";
 $lang["clock_out"] = "Λήξη Μέτρησης";
 $lang["in_date"] = "Ημερομηνία Έναρξης";

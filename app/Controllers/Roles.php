@@ -58,9 +58,9 @@ class Roles extends Security_Controller {
 
             $view_data['leave'] = get_array_value($permissions, "leave");
             $view_data['leave_specific'] = get_array_value($permissions, "leave_specific");
-            $view_data['attendancenew_specific'] = get_array_value($permissions, "attendancenew_specific");
+            $view_data['attendance_specific'] = get_array_value($permissions, "attendance_specific");
 
-            $view_data['attendancenew'] = get_array_value($permissions, "attendancenew");
+            $view_data['attendance'] = get_array_value($permissions, "attendance");
             $view_data['invoice'] = get_array_value($permissions, "invoice");
             $view_data['estimate'] = get_array_value($permissions, "estimate");
             $view_data['contract'] = get_array_value($permissions, "contract");
@@ -166,10 +166,10 @@ class Roles extends Security_Controller {
             $leave_specific = $this->request->getPost('leave_permission_specific');
         }
 
-        $attendancenew = $this->request->getPost('attendancenew_permission');
-        $attendancenew_specific = "";
-        if ($attendancenew === "specific") {
-            $attendancenew_specific = $this->request->getPost('attendancenew_permission_specific');
+        $attendance = $this->request->getPost('attendance_permission');
+        $attendance_specific = "";
+        if ($attendance === "specific") {
+            $attendance_specific = $this->request->getPost('attendance_permission_specific');
         }
 
         $invoice = $this->request->getPost('invoice_permission');
@@ -270,8 +270,8 @@ class Roles extends Security_Controller {
         $permissions = array(
             "leave" => $leave,
             "leave_specific" => $leave_specific,
-            "attendancenew" => $attendancenew,
-            "attendancenew_specific" => $attendancenew_specific,
+            "attendance" => $attendance,
+            "attendance_specific" => $attendance_specific,
             "invoice" => $invoice,
             "estimate" => $estimate,
             "contract" => $contract,

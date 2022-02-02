@@ -248,7 +248,7 @@ class Left_menu {
             $access_ticket = get_array_value($permissions, "ticket");
             $access_client = get_array_value($permissions, "client");
             $access_lead = get_array_value($permissions, "lead");
-            $access_timecard = get_array_value($permissions, "attendancenew");
+            $access_timecard = get_array_value($permissions, "attendance");
             $access_leave = get_array_value($permissions, "leave");
             $access_estimate = get_array_value($permissions, "estimate");
             $access_contract = get_array_value($permissions, "contract");
@@ -357,10 +357,10 @@ class Left_menu {
             }
 
 
-            if (get_setting("module_attendancenew") == "1" && ($this->ci->login_user->is_admin || $access_timecard)) {
-                $team_submenu["attendancenew"] = array("name" => "attendancenew", "url" => "attendancenew", "class" => "clock");
-            } else if (get_setting("module_attendancenew") == "1") {
-                $team_submenu["attendancenew"] = array("name" => "attendancenew", "url" => "attendancenew/attendancenew_info", "class" => "clock");
+            if (get_setting("module_attendance") == "1" && ($this->ci->login_user->is_admin || $access_timecard)) {
+                $team_submenu["attendance"] = array("name" => "attendance", "url" => "attendance", "class" => "clock");
+            } else if (get_setting("module_attendance") == "1") {
+                $team_submenu["attendance"] = array("name" => "attendance", "url" => "attendance/attendance_info", "class" => "clock");
             }
 
 

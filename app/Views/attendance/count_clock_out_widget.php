@@ -1,4 +1,4 @@
-<a href="<?php echo get_uri('attendancenew/index'); ?>" class="white-link">
+<a href="<?php echo get_uri('attendance/index'); ?>" class="white-link">
     <div class="card dashboard-icon-widget">
         <div class="card-body ">
             <div class="widget-icon bg-coral">

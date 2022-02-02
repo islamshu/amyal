@@ -40,7 +40,7 @@ if ($login_user->is_admin || (get_array_value($login_user->permissions, "can_man
 
 $settings_menu["access_permission"][] = array("name" => "team", "url" => "team");
 
-if (get_setting("module_attendancenew") == "1") {
+if (get_setting("module_attendance") == "1") {
     $settings_menu["access_permission"][] = array("name" => "ip_restriction", "url" => "settings/ip_restriction");
 }
 

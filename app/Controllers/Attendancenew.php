@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Attendancenew extends Security_Controller {
+class Attendance extends Security_Controller {
 
     function __construct() {
         parent::__construct();
@@ -14,7 +14,7 @@ class Attendancenew extends Security_Controller {
         $this->check_allowed_ip();
 
         //initialize managerial permission
-        $this->init_permission_checker("attendancenew");
+        $this->init_permission_checker("attendance");
     }
 
     //check ip restriction for none admin users
@@ -31,7 +31,7 @@ class Attendancenew extends Security_Controller {
         }
     }
 
-    //only admin or assigend members can access/manage other member's attendancenew
+    //only admin or assigend members can access/manage other member's attendance
     protected function access_only_allowed_members($user_id = 0) {
         if ($this->access_type !== "all") {
             if ($user_id === $this->login_user->id || !array_search($user_id, $this->allowed_members)) {
@@ -40,16 +40,16 @@ class Attendancenew extends Security_Controller {
         }
     }
 
-    //show attendancenew list view
+    //show attendance list view
     function index($tab = "") {
-        $this->check_module_availability("module_attendancenew");
+        $this->check_module_availability("module_attendance");
 
         $view_data['team_members_dropdown'] = json_encode($this->_get_members_dropdown_list_for_filter());
         $view_data['tab'] = clean_data($tab); //selected tab
-        return $this->template->rander("attendancenew/index", $view_data);
+        return $this->template->rander("attendance/index", $view_data);
     }
 
-    //show add/edit attendancenew modal
+    //show add/edit attendance modal
     function modal_form() {
         $user_id = 0;
 
@@ -58,7 +58,7 @@ class Attendancenew extends Security_Controller {
         ));
 
         $view_data['time_format_24_hours'] = get_setting("time_format") == "24_hours" ? true : false;
-        $view_data['model_info'] = $this->Attendancenew_model->get_one($this->request->getPost('id'));
+        $view_data['model_info'] = $this->Attendance_model->get_one($this->request->getPost('id'));
         if ($view_data['model_info']->id) {
             $user_id = $view_data['model_info']->user_id;
 
@@ -83,10 +83,10 @@ class Attendancenew extends Security_Controller {
             $view_data['team_members_dropdown'] = array("" => "-") + $this->Users_model->get_dropdown_list(array("first_name", "last_name"), "id", $where);
         }
 
-        return $this->template->view('attendancenew/modal_form', $view_data);
+        return $this->template->view('attendance/modal_form', $view_data);
     }
 
-    //show attendancenew note modal
+    //show attendance note modal
     function note_modal_form_new($user_id = 0) {
         $this->validate_submitted_data(array(
             "id" => "numeric|required"
@@ -95,11 +95,11 @@ class Attendancenew extends Security_Controller {
         $view_data["clock_out"] = $this->request->getPost("clock_out"); //trigger clockout after submit?
         $view_data["user_id"] = clean_data($user_id);
 
-        $view_data['model_info'] = $this->Attendancenew_model->get_one($this->request->getPost('id'));
-        return $this->template->view('attendancenew/note_modal_form_new', $view_data);
+        $view_data['model_info'] = $this->Attendance_model->get_one($this->request->getPost('id'));
+        return $this->template->view('attendance/note_modal_form_new', $view_data);
     }
 
-    //add/edit attendancenew record
+    //add/edit attendance record
     function save() {
         $id = $this->request->getPost('id');
 
@@ -137,7 +137,7 @@ class Attendancenew extends Security_Controller {
 
         //save user_id only on insert and it will not be editable
         if ($id) {
-            $info = $this->Attendancenew_model->get_one($id);
+            $info = $this->Attendance_model->get_one($id);
             $user_id = $info->user_id;
         } else {
             $user_id = $this->request->getPost('user_id');
@@ -147,7 +147,7 @@ class Attendancenew extends Security_Controller {
         $this->access_only_allowed_members($user_id);
 
 
-        $save_id = $this->Attendancenew_model->ci_save($data, $id);
+        $save_id = $this->Attendance_model->ci_save($data, $id);
         if ($save_id) {
             echo json_encode(array("success" => true, "data" => $this->_row_data($save_id), 'id' => $save_id, 'isUpdate' => $id ? true : false, 'message' => app_lang('record_saved')));
         } else {
@@ -155,7 +155,7 @@ class Attendancenew extends Security_Controller {
         }
     }
 
-    //edit attendancenew note
+    //edit attendance note
     function save_note() {
         $id = $this->request->getPost('id');
 
@@ -168,7 +168,7 @@ class Attendancenew extends Security_Controller {
         );
 
 
-        $save_id = $this->Attendancenew_model->ci_save($data, $id);
+        $save_id = $this->Attendance_model->ci_save($data, $id);
         if ($save_id) {
             echo json_encode(array("success" => true, "data" => $this->_row_data($save_id), 'id' => $save_id, 'isUpdate' => true, 'message' => app_lang('record_saved')));
         } else {
@@ -185,7 +185,7 @@ class Attendancenew extends Security_Controller {
             $this->access_only_allowed_members($user_id);
         }
 
-        $this->Attendancenew_model->log_time($user_id ? $user_id : $this->login_user->id, $note);
+        $this->Attendance_model->log_time($user_id ? $user_id : $this->login_user->id, $note);
 
         if ($user_id) {
             echo json_encode(array("success" => true, "data" => $this->_clock_in_out_row_data($user_id), 'id' => $user_id, 'message' => app_lang('record_saved'), "isUpdate" => true));
@@ -196,7 +196,7 @@ class Attendancenew extends Security_Controller {
         }
     }
 
-    //delete/undo attendancenew record
+    //delete/undo attendance record
     function delete() {
         $this->validate_submitted_data(array(
             "id" => "required|numeric"
@@ -205,18 +205,18 @@ class Attendancenew extends Security_Controller {
         $id = $this->request->getPost('id');
 
         if ($this->access_type !== "all") {
-            $info = $this->Attendancenew_model->get_one($id);
+            $info = $this->Attendance_model->get_one($id);
             $this->access_only_allowed_members($info->user_id);
         }
 
         if ($this->request->getPost('undo')) {
-            if ($this->Attendancenew_model->delete($id, true)) {
+            if ($this->Attendance_model->delete($id, true)) {
                 echo json_encode(array("success" => true, "data" => $this->_row_data($id), "message" => app_lang('record_undone')));
             } else {
                 echo json_encode(array("success" => false, app_lang('error_occurred')));
             }
         } else {
-            if ($this->Attendancenew_model->delete($id)) {
+            if ($this->Attendance_model->delete($id)) {
                 echo json_encode(array("success" => true, 'message' => app_lang('record_deleted')));
             } else {
                 echo json_encode(array("success" => false, 'message' => app_lang('record_cannot_be_deleted')));
@@ -224,7 +224,7 @@ class Attendancenew extends Security_Controller {
         }
     }
 
-    /* get all attendancenew of a given duration */
+    /* get all attendance of a given duration */
 
     function list_data() {
         $start_date = $this->request->getPost('start_date');
@@ -232,7 +232,7 @@ class Attendancenew extends Security_Controller {
         $user_id = $this->request->getPost('user_id');
 
         $options = array("start_date" => $start_date, "end_date" => $end_date, "login_user_id" => $this->login_user->id, "user_id" => $user_id, "access_type" => $this->access_type, "allowed_members" => $this->allowed_members);
-        $list_data = $this->Attendancenew_model->get_details($options)->getResult();
+        $list_data = $this->Attendance_model->get_details($options)->getResult();
 
         $result = array();
         foreach ($list_data as $data) {
@@ -241,29 +241,29 @@ class Attendancenew extends Security_Controller {
         echo json_encode(array("data" => $result));
     }
 
-    //load attendancenew attendancenew info view
-    function attendancenew_info() {
-        $this->check_module_availability("module_attendancenew");
+    //load attendance attendance info view
+    function attendance_info() {
+        $this->check_module_availability("module_attendance");
 
         $view_data['user_id'] = $this->login_user->id;
         $view_data['show_clock_in_out'] = true;
 
         if ($this->request->isAJAX()) {
-            return $this->template->view("team_members/attendancenew_info", $view_data);
+            return $this->template->view("team_members/attendance_info", $view_data);
         } else {
             $view_data['page_type'] = "full";
-            return $this->template->rander("team_members/attendancenew_info", $view_data);
+            return $this->template->rander("team_members/attendance_info", $view_data);
         }
     }
 
     //get a row of attendnace list
     private function _row_data($id) {
         $options = array("id" => $id);
-        $data = $this->Attendancenew_model->get_details($options)->getRow();
+        $data = $this->Attendance_model->get_details($options)->getRow();
         return $this->_make_row($data);
     }
 
-    //prepare a row of attendancenew list
+    //prepare a row of attendance list
     private function _make_row($data) {
         $image_url = get_avatar($data->created_by_avatar);
         $user = "<span class='avatar avatar-xs mr10'><img src='$image_url' alt=''></span> $data->created_by_user";
@@ -278,8 +278,8 @@ class Attendancenew extends Security_Controller {
         }
         $from_time = strtotime($data->in_time);
 
-        $option_links = modal_anchor(get_uri("attendancenew/modal_form"), "<i data-feather='edit' class='icon-16'></i>", array("class" => "edit", "title" => app_lang('edit_attendancenew'), "data-post-id" => $data->id))
-                . js_anchor("<i data-feather='x' class='icon-16'></i>", array('title' => app_lang('delete_attendancenew'), "class" => "delete", "data-id" => $data->id, "data-action-url" => get_uri("attendancenew/delete"), "data-action" => "delete"));
+        $option_links = modal_anchor(get_uri("attendance/modal_form"), "<i data-feather='edit' class='icon-16'></i>", array("class" => "edit", "title" => app_lang('edit_attendance'), "data-post-id" => $data->id))
+                . js_anchor("<i data-feather='x' class='icon-16'></i>", array('title' => app_lang('delete_attendance'), "class" => "delete", "data-id" => $data->id, "data-action-url" => get_uri("attendance/delete"), "data-action" => "delete"));
 
         if ($this->access_type != "all") {
             //don't show options links for none admin user's own records
@@ -294,9 +294,9 @@ class Attendancenew extends Security_Controller {
             $note_title = "";
         }
 
-        $note_link = modal_anchor(get_uri("attendancenew/note_modal_form_new"), "<i data-feather='message-circle' class='icon-16'></i>", array("class" => "edit text-muted", "title" => app_lang("note"), "data-post-id" => $data->id));
+        $note_link = modal_anchor(get_uri("attendance/note_modal_form_new"), "<i data-feather='message-circle' class='icon-16'></i>", array("class" => "edit text-muted", "title" => app_lang("note"), "data-post-id" => $data->id));
         if ($data->note) {
-            $note_link = modal_anchor(get_uri("attendancenew/note_modal_form_new"), "<i data-feather='message-circle' class='icon-16 icon-fill-secondary'></i>", array("class" => "edit text-muted", "title" => $note_title, "data-modal-title" => app_lang("note"), "data-post-id" => $data->id));
+            $note_link = modal_anchor(get_uri("attendance/note_modal_form_new"), "<i data-feather='message-circle' class='icon-16 icon-fill-secondary'></i>", array("class" => "edit text-muted", "title" => $note_title, "data-modal-title" => app_lang("note"), "data-post-id" => $data->id));
         }
 
 
@@ -314,15 +314,15 @@ class Attendancenew extends Security_Controller {
         );
     }
 
-    //load the custom date view of attendancenew list 
+    //load the custom date view of attendance list 
     function custom() {
         $view_data['team_members_dropdown'] = json_encode($this->_get_members_dropdown_list_for_filter());
-        return $this->template->view("attendancenew/custom_list", $view_data);
+        return $this->template->view("attendance/custom_list", $view_data);
     }
 
-    //load the clocked in members list view of attendancenew list 
+    //load the clocked in members list view of attendance list 
     function members_clocked_in() {
-        return $this->template->view("attendancenew/members_clocked_in");
+        return $this->template->view("attendance/members_clocked_in");
     }
 
     private function _get_members_dropdown_list_for_filter() {
@@ -359,13 +359,13 @@ class Attendancenew extends Security_Controller {
         return $where;
     }
 
-    //load the custom date view of attendancenew list 
+    //load the custom date view of attendance list 
     function summary() {
         $view_data['team_members_dropdown'] = json_encode($this->_get_members_dropdown_list_for_filter());
-        return $this->template->view("attendancenew/summary_list", $view_data);
+        return $this->template->view("attendance/summary_list", $view_data);
     }
 
-    /* get all attendancenew of a given duration */
+    /* get all attendance of a given duration */
 
     function summary_list_data() {
         $start_date = $this->request->getPost('start_date');
@@ -373,7 +373,7 @@ class Attendancenew extends Security_Controller {
         $user_id = $this->request->getPost('user_id');
 
         $options = array("start_date" => $start_date, "end_date" => $end_date, "login_user_id" => $this->login_user->id, "user_id" => $user_id, "access_type" => $this->access_type, "allowed_members" => $this->allowed_members);
-        $list_data = $this->Attendancenew_model->get_summary_details($options)->getResult();
+        $list_data = $this->Attendance_model->get_summary_details($options)->getResult();
 
         $result = array();
         foreach ($list_data as $data) {
@@ -392,13 +392,13 @@ class Attendancenew extends Security_Controller {
         echo json_encode(array("data" => $result));
     }
 
-    //load the attendancenew summary details tab
+    //load the attendance summary details tab
     function summary_details() {
         $view_data['team_members_dropdown'] = json_encode($this->_get_members_dropdown_list_for_filter());
-        return $this->template->view("attendancenew/summary_details_list", $view_data);
+        return $this->template->view("attendance/summary_details_list", $view_data);
     }
 
-    /* get data the attendancenew summary details tab */
+    /* get data the attendance summary details tab */
 
     function summary_details_list_data() {
         $start_date = $this->request->getPost('start_date');
@@ -415,7 +415,7 @@ class Attendancenew extends Security_Controller {
             "summary_details" => true
         );
 
-        $list_data = $this->Attendancenew_model->get_summary_details($options)->getResult();
+        $list_data = $this->Attendance_model->get_summary_details($options)->getResult();
 
         //group the list by users
 
@@ -485,7 +485,7 @@ class Attendancenew extends Security_Controller {
     function clocked_in_members_list_data() {
 
         $options = array("login_user_id" => $this->login_user->id, "access_type" => $this->access_type, "allowed_members" => $this->allowed_members, "only_clocked_in_members" => true);
-        $list_data = $this->Attendancenew_model->get_details($options)->getResult();
+        $list_data = $this->Attendance_model->get_details($options)->getResult();
 
         $result = array();
         foreach ($list_data as $data) {
@@ -494,16 +494,16 @@ class Attendancenew extends Security_Controller {
         echo json_encode(array("data" => $result));
     }
 
-    //load the clock in / out tab view of attendancenew list 
+    //load the clock in / out tab view of attendance list 
     function clock_in_out() {
-        return $this->template->view("attendancenew/clock_in_out");
+        return $this->template->view("attendance/clock_in_out");
     }
 
-    /* get data the attendancenew clock In / Out tab */
+    /* get data the attendance clock In / Out tab */
 
     function clock_in_out_list_data() {
         $options = $this->_get_members_query_options("data");
-        $list_data = $this->Attendancenew_model->get_clock_in_out_details_of_all_users($options)->getResult();
+        $list_data = $this->Attendance_model->get_clock_in_out_details_of_all_users($options)->getResult();
 
         $result = array();
         foreach ($list_data as $data) {
@@ -515,19 +515,19 @@ class Attendancenew extends Security_Controller {
 
     private function _clock_in_out_row_data($user_id) {
         $options = array("id" => $user_id);
-        $data = $this->Attendancenew_model->get_clock_in_out_details_of_all_users($options)->getRow();
+        $data = $this->Attendance_model->get_clock_in_out_details_of_all_users($options)->getRow();
         return $this->_make_clock_in_out_row($data);
     }
 
     private function _make_clock_in_out_row($data) {
-        if (isset($data->attendancenew_id)) {
+        if (isset($data->attendance_id)) {
             $in_time = format_to_time($data->in_time);
             $in_datetime = format_to_datetime($data->in_time);
             $status = "<div class='mb15' title='$in_datetime'>" . app_lang('clock_started_at') . " : $in_time</div>";
-            $view_data = modal_anchor(get_uri("attendancenew/note_modal_form_new/$data->id"), "<i data-feather='log-out' class='icon-16'></i> " . app_lang('clock_out'), array("class" => "btn btn-default", "title" => app_lang('clock_out'), "id" => "timecard-clock-out", "data-post-id" => $data->attendancenew_id, "data-post-clock_out" => 1, "data-post-id" => $data->id));
+            $view_data = modal_anchor(get_uri("attendance/note_modal_form_new/$data->id"), "<i data-feather='log-out' class='icon-16'></i> " . app_lang('clock_out'), array("class" => "btn btn-default", "title" => app_lang('clock_out'), "id" => "timecard-clock-out", "data-post-id" => $data->attendance_id, "data-post-clock_out" => 1, "data-post-id" => $data->id));
         } else {
             $status = "<div class='mb15'>" . app_lang('not_clocked_id_yet') . "</div>";
-            $view_data = js_anchor("<i data-feather='log-in' class='icon-16'></i> " . app_lang('clock_in'), array('title' => app_lang('clock_in'), "class" => "btn btn-default spinning-btn", "data-action-url" => get_uri("attendancenew/log_time/$data->id"), "data-action" => "update", "data-inline-loader" => "1", "data-post-id" => $data->id));
+            $view_data = js_anchor("<i data-feather='log-in' class='icon-16'></i> " . app_lang('clock_in'), array('title' => app_lang('clock_in'), "class" => "btn btn-default spinning-btn", "data-action-url" => get_uri("attendance/log_time/$data->id"), "data-action" => "update", "data-inline-loader" => "1", "data-post-id" => $data->id));
         }
 
         $image_url = get_avatar($data->image);
@@ -542,5 +542,5 @@ class Attendancenew extends Security_Controller {
 
 }
 
-/* End of file attendancenew.php */
-/* Location: ./app/controllers/attendancenew.php */
+/* End of file attendance.php */
+/* Location: ./app/controllers/attendance.php */

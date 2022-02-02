@@ -1,11 +1,11 @@
 <div class="table-responsive">
-    <table id="attendancenew-summary-details-table" class="display" cellspacing="0" width="100%">            
+    <table id="attendance-summary-details-table" class="display" cellspacing="0" width="100%">            
     </table>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#attendancenew-summary-details-table").appTable({
-            source: '<?php echo_uri("attendancenew/summary_details_list_data/"); ?>',
+        $("#attendance-summary-details-table").appTable({
+            source: '<?php echo_uri("attendance/summary_details_list_data/"); ?>',
             order: [[0, "asc"]],
             filterDropdown: [{name: "user_id", class: "w200", options: <?php echo $team_members_dropdown; ?>}],
             rangeDatepicker: [{startDate: {name: "start_date", value: moment().format("YYYY-MM-DD")}, endDate: {name: "end_date", value: moment().format("YYYY-MM-DD")}}],

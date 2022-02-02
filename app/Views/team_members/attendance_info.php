@@ -3,32 +3,32 @@ if (isset($page_type) && $page_type === "full") {
     echo "m20";
 }
 ?>">
-    <ul id="team-member-attendancenew-tabs" data-bs-toggle="ajax-tab" class="nav nav-tabs bg-white rounded-0 title" role="tablist">
+    <ul id="team-member-attendance-tabs" data-bs-toggle="ajax-tab" class="nav nav-tabs bg-white rounded-0 title" role="tablist">
         <li class="title-tab"><h4 class="pl15 pt10 pr15"><?php
                 if ($user_id === $login_user->id) {
                     echo app_lang("my_time_cards");
                 } else {
-                    echo app_lang("attendancenew");
+                    echo app_lang("attendance");
                 }
                 ?></h4></li>
-        <li><a id="monthly-attendancenew-button"  role="presentation"  href="javascript:;" data-bs-target="#team_member-monthly-attendancenew"><?php echo app_lang("monthly"); ?></a></li>
-        <li><a role="presentation" href="<?php echo_uri("team_members/weekly_attendancenew/"); ?>" data-bs-target="#team_member-weekly-attendancenew"><?php echo app_lang('weekly'); ?></a></li>    
-        <li><a role="presentation" href="<?php echo_uri("team_members/custom_range_attendancenew/"); ?>" data-bs-target="#team_member-custom-range-attendancenew"><?php echo app_lang('custom'); ?></a></li>    
-        <li><a role="presentation" href="<?php echo_uri("team_members/attendancenew_summary/" . $user_id); ?>" data-bs-target="#team_member-attendancenew-summary"><?php echo app_lang('summary'); ?></a></li>   
+        <li><a id="monthly-attendance-button"  role="presentation"  href="javascript:;" data-bs-target="#team_member-monthly-attendance"><?php echo app_lang("monthly"); ?></a></li>
+        <li><a role="presentation" href="<?php echo_uri("team_members/weekly_attendance/"); ?>" data-bs-target="#team_member-weekly-attendance"><?php echo app_lang('weekly'); ?></a></li>    
+        <li><a role="presentation" href="<?php echo_uri("team_members/custom_range_attendance/"); ?>" data-bs-target="#team_member-custom-range-attendance"><?php echo app_lang('custom'); ?></a></li>    
+        <li><a role="presentation" href="<?php echo_uri("team_members/attendance_summary/" . $user_id); ?>" data-bs-target="#team_member-attendance-summary"><?php echo app_lang('summary'); ?></a></li>   
 
         <?php if (isset($show_clock_in_out)) { ?>
-            <li><a role="presentation" href="<?php echo_uri("attendancenew/clock_in_out"); ?>" data-bs-target="#clock-in-out"><?php echo app_lang('clock_in_out'); ?></a></li>
+            <li><a role="presentation" href="<?php echo_uri("attendance/clock_in_out"); ?>" data-bs-target="#clock-in-out"><?php echo app_lang('clock_in_out'); ?></a></li>
         <?php } ?>
 
     </ul>
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade" id="team_member-monthly-attendancenew">
+        <div role="tabpanel" class="tab-pane fade" id="team_member-monthly-attendance">
             <div class="table-responsive">
-                <table id="monthly-attendancenew-table" class="display" cellspacing="0" width="100%">    
+                <table id="monthly-attendance-table" class="display" cellspacing="0" width="100%">    
                 </table>
             </div>
             <script type="text/javascript">
-                loadMembersAttendancenewTable = function (selector, type) {
+                loadMembersAttendanceTable = function (selector, type) {
                     var rangeDatepicker = [],
                             dateRangeType = "";
 
@@ -39,7 +39,7 @@ if (isset($page_type) && $page_type === "full") {
                     }
 
                     $(selector).appTable({
-                        source: '<?php echo_uri("attendancenew/list_data/"); ?>',
+                        source: '<?php echo_uri("attendance/list_data/"); ?>',
                         order: [[2, "desc"]],
                         dateRangeType: dateRangeType,
                         rangeDatepicker: rangeDatepicker,
@@ -62,13 +62,13 @@ if (isset($page_type) && $page_type === "full") {
                     });
                 };
                 $(document).ready(function () {
-                    loadMembersAttendancenewTable("#monthly-attendancenew-table", "monthly");
+                    loadMembersAttendanceTable("#monthly-attendance-table", "monthly");
                 });
             </script>
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="team_member-weekly-attendancenew"></div>
-        <div role="tabpanel" class="tab-pane fade" id="team_member-custom-range-attendancenew"></div>
-        <div role="tabpanel" class="tab-pane fade" id="team_member-attendancenew-summary"></div>
+        <div role="tabpanel" class="tab-pane fade" id="team_member-weekly-attendance"></div>
+        <div role="tabpanel" class="tab-pane fade" id="team_member-custom-range-attendance"></div>
+        <div role="tabpanel" class="tab-pane fade" id="team_member-attendance-summary"></div>
         <div role="tabpanel" class="tab-pane fade" id="clock-in-out"></div>
     </div>
 </div>

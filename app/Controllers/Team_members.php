@@ -391,24 +391,24 @@ class Team_members extends Security_Controller {
 
                 $view_data['show_account_settings'] = false;
 
-                $show_attendancenew = false;
+                $show_attendance = false;
                 $show_leave = false;
 
                 $expense_access_info = $this->get_access_info("expense");
                 $view_data["show_expense_info"] = (get_setting("module_expense") == "1" && $expense_access_info->access_type == "all") ? true : false;
 
-                //admin can access all members attendancenew and leave
+                //admin can access all members attendance and leave
                 //none admin users can only access to his/her own information 
 
                 if ($this->login_user->is_admin || $user_info->id === $this->login_user->id || get_array_value($this->login_user->permissions, "can_manage_user_role_and_permissions")) {
-                    $show_attendancenew = true;
+                    $show_attendance = true;
                     $show_leave = true;
                     $view_data['show_account_settings'] = true;
                 } else {
-                    //none admin users but who has access to this team member's attendancenew and leave can access this info
-                    $access_timecard = $this->get_access_info("attendancenew");
+                    //none admin users but who has access to this team member's attendance and leave can access this info
+                    $access_timecard = $this->get_access_info("attendance");
                     if ($access_timecard->access_type === "all" || in_array($user_info->id, $access_timecard->allowed_members)) {
-                        $show_attendancenew = true;
+                        $show_attendance = true;
                     }
 
                     $access_leave = $this->get_access_info("leave");
@@ -419,7 +419,7 @@ class Team_members extends Security_Controller {
 
 
                 //check module availability
-                $view_data['show_attendancenew'] = $show_attendancenew && get_setting("module_attendancenew") ? true : false;
+                $view_data['show_attendance'] = $show_attendance && get_setting("module_attendance") ? true : false;
                 $view_data['show_leave'] = $show_leave && get_setting("module_leave") ? true : false;
 
                 //check contact info view permissions
@@ -794,30 +794,30 @@ class Team_members extends Security_Controller {
         }
     }
 
-    //show attendancenew list of a team member
-    function attendancenew_info($user_id) {
+    //show attendance list of a team member
+    function attendance_info($user_id) {
         if ($user_id) {
             validate_numeric_value($user_id);
             $view_data['user_id'] = $user_id;
-            return $this->template->view("team_members/attendancenew_info", $view_data);
+            return $this->template->view("team_members/attendance_info", $view_data);
         }
     }
 
-    //show weekly attendancenew list of a team member
-    function weekly_attendancenew() {
-        return $this->template->view("team_members/weekly_attendancenew");
+    //show weekly attendance list of a team member
+    function weekly_attendance() {
+        return $this->template->view("team_members/weekly_attendance");
     }
 
-    //show weekly attendancenew list of a team member
-    function custom_range_attendancenew() {
-        return $this->template->view("team_members/custom_range_attendancenew");
+    //show weekly attendance list of a team member
+    function custom_range_attendance() {
+        return $this->template->view("team_members/custom_range_attendance");
     }
 
-    //show attendancenew summary of a team member
-    function attendancenew_summary($user_id) {
+    //show attendance summary of a team member
+    function attendance_summary($user_id) {
         validate_numeric_value($user_id);
         $view_data["user_id"] = $user_id;
-        return $this->template->view("team_members/attendancenew_summary", $view_data);
+        return $this->template->view("team_members/attendance_summary", $view_data);
     }
 
     //show leave list of a team member

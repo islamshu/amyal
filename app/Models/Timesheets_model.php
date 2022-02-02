@@ -334,15 +334,15 @@ class Timesheets_model extends Crud_model {
     }
 
     function count_total_time($options = array()) {
-        $attendnace_table = $this->db->prefixTable('attendancenew');
+        $attendnace_table = $this->db->prefixTable('attendance');
         $timesheet_table = $this->db->prefixTable('project_time');
 
-        $attendancenew_where = "";
+        $attendance_where = "";
         $timesheet_where = "";
 
         $user_id = get_array_value($options, "user_id");
         if ($user_id) {
-            $attendancenew_where .= " AND $attendnace_table.user_id=$user_id";
+            $attendance_where .= " AND $attendnace_table.user_id=$user_id";
             $timesheet_where .= " AND $timesheet_table.user_id=$user_id";
         }
 
@@ -364,10 +364,10 @@ class Timesheets_model extends Crud_model {
 
         $info = new \stdClass();
 
-        $attendancenew_sql = "SELECT  SUM(TIME_TO_SEC(TIMEDIFF($attendnace_table.out_time,$attendnace_table.in_time))) total_sec
+        $attendance_sql = "SELECT  SUM(TIME_TO_SEC(TIMEDIFF($attendnace_table.out_time,$attendnace_table.in_time))) total_sec
                 FROM $attendnace_table 
-                WHERE $attendnace_table.deleted=0 AND $attendnace_table.status!='incomplete' $attendancenew_where";
-        $info->timecard_total = $this->db->query($attendancenew_sql)->getRow()->total_sec;
+                WHERE $attendnace_table.deleted=0 AND $attendnace_table.status!='incomplete' $attendance_where";
+        $info->timecard_total = $this->db->query($attendance_sql)->getRow()->total_sec;
 
         $timesheet_sql = "SELECT (SUM(TIME_TO_SEC(TIMEDIFF($timesheet_table.end_time,$timesheet_table.start_time))) + SUM((ROUND(($timesheet_table.hours * 60), 0)) * 60)) total_sec
                 FROM $timesheet_table 

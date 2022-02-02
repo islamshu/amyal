@@ -6,17 +6,17 @@
         <?php
         if ($users) {
             foreach ($users as $user) {
-                $attendancenew_in_time = $user->in_time;
-                $explode_attendancenew_in_time = explode(" ", $attendancenew_in_time);
+                $attendance_in_time = $user->in_time;
+                $explode_attendance_in_time = explode(" ", $attendance_in_time);
 
                 $in_time = "<span class='text-off'>" . "<i data-feather='clock' class='icon-16'></i>" . " ";
 
-                if ($explode_attendancenew_in_time[0] == get_today_date()) {
-                    //if the attendancenew has been started today, then show only time
-                    $in_time .= format_to_time($attendancenew_in_time);
+                if ($explode_attendance_in_time[0] == get_today_date()) {
+                    //if the attendance has been started today, then show only time
+                    $in_time .= format_to_time($attendance_in_time);
                 } else {
-                    //if the attendancenew hasn't been started today, then show only time
-                    $in_time .= format_to_relative_time($attendancenew_in_time);
+                    //if the attendance hasn't been started today, then show only time
+                    $in_time .= format_to_relative_time($attendance_in_time);
                 }
 
                 $in_time .= "</span>";
