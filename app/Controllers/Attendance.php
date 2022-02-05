@@ -14,7 +14,7 @@ class Attendance extends Security_Controller {
         $this->check_allowed_ip();
 
         //initialize managerial permission
-        $this->init_permission_checker("attendance");
+        // $this->init_permission_checker("attendance");
     }
 
     //check ip restriction for none admin users
