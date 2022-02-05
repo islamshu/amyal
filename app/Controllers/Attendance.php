@@ -22,9 +22,10 @@ class Attendance extends Security_Controller {
         if (!$this->login_user->is_admin) {
             $ip = get_real_ip();
             $allowed_ips = $this->Settings_model->get_setting("allowed_ip_addresses");
-            die($allowed_ips);
+        
             if ($allowed_ips) {
                 $allowed_ip_array = array_map('trim', preg_split('/\R/', $allowed_ips));
+                die($allowed_ip_array);
                 if (!in_array($ip, $allowed_ip_array)) {
                     app_redirect("forbidden");
                 }
