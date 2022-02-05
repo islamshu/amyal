@@ -27,7 +27,6 @@ class Attendance extends Security_Controller {
                 $allowed_ip_array = array_map('trim', preg_split('/\R/', $allowed_ips));
            
                 if (in_array($ip, $allowed_ip_array)) {
-                    die(json_encode($allowed_ip_array));
                     app_redirect("forbidden");
                 }
             }
