@@ -11,10 +11,10 @@ class Attendance extends Security_Controller {
         $this->access_only_team_members();
 
         //we can set ip restiction to access this module. validate user access
-        $this->check_allowed_ip();
+        // $this->check_allowed_ip();
 
         //initialize managerial permission
-        // $this->init_permission_checker("attendance");
+        $this->init_permission_checker("attendance");
     }
 
     //check ip restriction for none admin users
