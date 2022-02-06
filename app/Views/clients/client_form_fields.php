@@ -76,6 +76,22 @@
 </div>
 <div class="form-group">
     <div class="row">
+        <label for="city_ar" class="<?php echo $label_column; ?>"><?php echo app_lang('city_ar'); ?></label>
+        <div class="<?php echo $field_column; ?>">
+            <?php
+            echo form_input(array(
+                "id" => "city_ar",
+                "name" => "city_ar",
+                "value" => $model_info->city_ar,
+                "class" => "form-control",
+                "placeholder" => app_lang('city_ar')
+            ));
+            ?>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
         <label for="state" class="<?php echo $label_column; ?>"><?php echo app_lang('state'); ?></label>
         <div class="<?php echo $field_column; ?>">
             <?php
@@ -122,6 +138,23 @@
         </div>
     </div>
 </div>
+<div class="form-group">
+    <div class="row">
+        <label for="country_ar" class="<?php echo $label_column; ?>"><?php echo app_lang('country_ar'); ?></label>
+        <div class="<?php echo $field_column; ?>">
+            <?php
+            echo form_input(array(
+                "id" => "country_ar",
+                "name" => "country_ar",
+                "value" => $model_info->country_ar,
+                "class" => "form-control",
+                "placeholder" => app_lang('country_ar')
+            ));
+            ?>
+        </div>
+    </div>
+</div>
+
 <div class="form-group">
     <div class="row">
         <label for="phone" class="<?php echo $label_column; ?>"><?php echo app_lang('phone'); ?></label>

@@ -109,14 +109,16 @@ class Clients extends Security_Controller {
         ));
 
         $company_name = $this->request->getPost('company_name');
-
         $data = array(
             "company_name" => $company_name,
             "address" => $this->request->getPost('address'),
             "city" => $this->request->getPost('city'),
+            "city_ar" => $this->request->getPost('city_ar'),
             "state" => $this->request->getPost('state'),
             "zip" => $this->request->getPost('zip'),
             "country" => $this->request->getPost('country'),
+
+            "country_ar" => $this->request->getPost('country_ar'),
             "phone" => $this->request->getPost('phone'),
             "website" => $this->request->getPost('website'),
             "vat_number" => $this->request->getPost('vat_number')

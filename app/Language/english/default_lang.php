@@ -503,6 +503,9 @@ $lang["bill_date"] = "Bill date";
 $lang["due_date"] = "Due date";
 $lang["payment_date"] = "Payment date";
 $lang["bill_to"] = "Bill To";
+$lang["city_ar"] = "City In Arabic";
+$lang["country_ar"] = "Country In Arabic";
+
 $lang["title_ar"] = "Title In Arabic";
 $lang["description_ar"] = "Description In Arabic";
 $lang["from_to"] = "From";

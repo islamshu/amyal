@@ -6,8 +6,8 @@
 <span class="invoice-meta text-default" style="font-size: 80%; color: #666;">
     <?php if ($client_info->address || $client_info->vat_number || (isset($client_info->custom_fields) && $client_info->custom_fields)) { ?>
         <div>  <br /><?php echo nl2br($client_info->address); ?>
-            <?php if ($client_info->city) { ?>
-                <br /><?php echo $client_info->city; ?>
+            <?php if ($client_info->city_ar) { ?>
+                <br /><?php echo $client_info->city_ar; ?>
             <?php } ?>
             <?php if ($client_info->state) { ?>
                 <br /><?php echo $client_info->state; ?>
@@ -15,11 +15,11 @@
             <?php if ($client_info->zip) { ?>
                 <br /><?php echo $client_info->zip; ?>
             <?php } ?>
-            <?php if ($client_info->country) { ?>
-                <br /><?php echo $client_info->country; ?>
+            <?php if ($client_info->country_ar) { ?>
+                <br /><?php echo $client_info->country_ar; ?>
             <?php } ?>
             <?php if ($client_info->vat_number) { ?>
-                <br /><?php echo app_lang("vat_number") . ": " . $client_info->vat_number; ?>
+                <br /><?php echo "الرقم الضريبي" . ": " . $client_info->vat_number; ?>
             <?php } ?>
             <?php
             if (isset($client_info->custom_fields) && $client_info->custom_fields) {
