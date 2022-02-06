@@ -30,7 +30,7 @@
 <table class="table-responsive" style="width: 100%; color: #444; direction: rtl !important; text-align: center;" >            
     <tr style="font-weight: bold; background-color: <?php echo $color; ?>; color: #fff;  ">
     <th style="text-align: center;  width: 20%; "> الإجمالي</th>
-    <th style="text-align: center;  width: 20%; border-left: 1px solid #eee;"> <?php echo app_lang("rate"); ?></th>
+    <th style="text-align: center;  width: 20%; border-left: 1px solid #eee;"> سعر الكمية</th>
     <th style="text-align: center;  width: 15%; border-left: 1px solid #eee;"> الكمية</th>
 
         <th style="width: 45%; border-left: 1px solid #eee;">العنصر </th>
