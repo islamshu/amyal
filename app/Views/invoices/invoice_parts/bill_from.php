@@ -11,7 +11,7 @@ $company_vat_number = get_setting("company_vat_number");
 <span class="invoice-meta text-default" style="font-size: 80%; color: #666; width: 100%; ">
   
               
-        <br />2385 Makkah Al-Mukarramah Road - Al-Sulaymaniyah District - Riyadh
+        <br />2385 Makkah Al Mukarramah Road - Sulaymaniyah District - Riyadh
         <br>13524 
         <br />Saudi Arabia
         <br />VAT Number:310312014300003
