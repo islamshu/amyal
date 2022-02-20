@@ -164,13 +164,21 @@ if($arr < 2 ){
 <div style="border-top: 2px solid #f2f2f2; color:#444; padding:0 0 20px 0;"><br /><?php echo($qr_code) ?></div>
 
 </div>
-<?php if ($invoice_info->note) { ?>
+ <?php 
+//  if ($invoice_info->note) {
+      ?>
     <br />
     <br />
-    <div style="border-top: 2px solid #f2f2f2; color:#444; padding:0 0 20px 0;"><br /><?php echo nl2br($invoice_info->note); ?></div>
-<?php } else { ?> <!-- use table to avoid extra spaces -->
+    <div style="border-top: 2px solid #f2f2f2; color:#444; padding:0 0 20px 0;"><br /><?php 
+    // echo nl2br($invoice_info->note);
+     ?></div>
+<?php
+//  } else {
+      ?> <!-- use table to avoid extra spaces -->
     <br /><br /><table class="invoice-pdf-hidden-table" style="border-top: 2px solid #f2f2f2; margin: 0; padding: 0; display: block; width: 100%; height: 10px;"></table>
-<?php } ?>
+<?php
+//  }
+  ?> 
 <span style="color:#444; line-height: 14px;margin-bottom: 40%;" >
     <?php echo get_setting("invoice_footer"); ?>
 </span>
